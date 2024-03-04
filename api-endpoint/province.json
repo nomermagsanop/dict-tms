@@ -1,0 +1,576 @@
+[
+    {
+        "id": "Abra",
+        "psgcCode": "1400100000",
+        "provDesc": "140100000",
+        "regCode": "27 Mun. and 303 Bgys",
+        "provCode": "250,985"
+    },
+    {
+        "id": "Benguet",
+        "psgcCode": "1401100000",
+        "provDesc": "141100000",
+        "regCode": "13 Mun., 1 City and 140 Bgys",
+        "provCode": "460,683"
+    },
+    {
+        "id": "Ifugao",
+        "psgcCode": "1402700000",
+        "provDesc": "142700000",
+        "regCode": "11 Mun. and 176 Bgys",
+        "provCode": "207,498"
+    },
+    {
+        "id": "Kalinga",
+        "psgcCode": "1403200000",
+        "provDesc": "143200000",
+        "regCode": "7 Mun., 1 City and 153 Bgys",
+        "provCode": "229,570"
+    },
+    {
+        "id": "Mountain Province",
+        "psgcCode": "1404400000",
+        "provDesc": "144400000",
+        "regCode": "10 Mun. and 144 Bgys",
+        "provCode": "158,200"
+    },
+    {
+        "id": "Apayao",
+        "psgcCode": "1408100000",
+        "provDesc": "148100000",
+        "regCode": "7 Mun. and 133 Bgys",
+        "provCode": "124,366"
+    },
+    {
+        "id": "Ilocos Norte",
+        "psgcCode": "0102800000",
+        "provDesc": "012800000",
+        "regCode": "21 Mun., 2 Cities and 559 Bgys",
+        "provCode": "609,588"
+    },
+    {
+        "id": "Ilocos Sur",
+        "psgcCode": "0102900000",
+        "provDesc": "012900000",
+        "regCode": "32 Mun., 2 Cities and 768 Bgys",
+        "provCode": "706,009"
+    },
+    {
+        "id": "La Union",
+        "psgcCode": "0103300000",
+        "provDesc": "013300000",
+        "regCode": "19 Mun., 1 City and 576 Bgys",
+        "provCode": "822,352"
+    },
+    {
+        "id": "Pangasinan",
+        "psgcCode": "0105500000",
+        "provDesc": "015500000",
+        "regCode": "44 Mun., 4 Cities and 1364 Bgys",
+        "provCode": "3,163,190"
+    },
+    {
+        "id": "Batanes",
+        "psgcCode": "0200900000",
+        "provDesc": "020900000",
+        "regCode": "6 Mun. and 29 Bgys",
+        "provCode": "18,831"
+    },
+    {
+        "id": "Cagayan",
+        "psgcCode": "0201500000",
+        "provDesc": "021500000",
+        "regCode": "28 Mun., 1 City and 820 Bgys",
+        "provCode": "1,268,603"
+    },
+    {
+        "id": "Isabela",
+        "psgcCode": "0203100000",
+        "provDesc": "023100000",
+        "regCode": "34 Mun., 3 Cities and 1055 Bgys",
+        "provCode": "1,697,050"
+    },
+    {
+        "id": "Nueva Vizcaya",
+        "psgcCode": "0205000000",
+        "provDesc": "025000000",
+        "regCode": "15 Mun. and 275 Bgys",
+        "provCode": "497,432"
+    },
+    {
+        "id": "Quirino",
+        "psgcCode": "0205700000",
+        "provDesc": "025700000",
+        "regCode": "6 Mun. and 132 Bgys",
+        "provCode": "203,828"
+    },
+    {
+        "id": "Bataan",
+        "psgcCode": "0300800000",
+        "provDesc": "030800000",
+        "regCode": "11 Mun., 1 City and 237 Bgys",
+        "provCode": "853,373"
+    },
+    {
+        "id": "Bulacan",
+        "psgcCode": "0301400000",
+        "provDesc": "031400000",
+        "regCode": "20 Mun., 4 Cities and 572 Bgys",
+        "provCode": "3,708,890"
+    },
+    {
+        "id": "Nueva Ecija",
+        "psgcCode": "0304900000",
+        "provDesc": "034900000",
+        "regCode": "27 Mun., 5 Cities and 849 Bgys",
+        "provCode": "2,310,134"
+    },
+    {
+        "id": "Pampanga",
+        "psgcCode": "0305400000",
+        "provDesc": "035400000",
+        "regCode": "19 Mun., 3 Cities and 505 Bgys",
+        "provCode": "2,437,709"
+    },
+    {
+        "id": "Tarlac",
+        "psgcCode": "0306900000",
+        "provDesc": "036900000",
+        "regCode": "17 Mun., 1 City and 511 Bgys",
+        "provCode": "1,503,456"
+    },
+    {
+        "id": "Zambales",
+        "psgcCode": "0307100000",
+        "provDesc": "037100000",
+        "regCode": "13 Mun., 1 City and 230 Bgys",
+        "provCode": "649,615"
+    },
+    {
+        "id": "Aurora",
+        "psgcCode": "0307700000",
+        "provDesc": "037700000",
+        "regCode": "8 Mun. and 151 Bgys",
+        "provCode": "235,750"
+    },
+    {
+        "id": "Batangas",
+        "psgcCode": "0401000000",
+        "provDesc": "041000000",
+        "regCode": "29 Mun., 5 Cities and 1078 Bgys",
+        "provCode": "2,908,494"
+    },
+    {
+        "id": "Cavite",
+        "psgcCode": "0402100000",
+        "provDesc": "042100000",
+        "regCode": "16 Mun., 7 Cities and 829 Bgys",
+        "provCode": "4,344,829"
+    },
+    {
+        "id": "Laguna",
+        "psgcCode": "0403400000",
+        "provDesc": "043400000",
+        "regCode": "24 Mun., 6 Cities and 681 Bgys",
+        "provCode": "3,382,193"
+    },
+    {
+        "id": "Quezon",
+        "psgcCode": "0405600000",
+        "provDesc": "045600000",
+        "regCode": "39 Mun., 1 City and 1209 Bgys",
+        "provCode": "1,950,459"
+    },
+    {
+        "id": "Rizal",
+        "psgcCode": "0405800000",
+        "provDesc": "045800000",
+        "regCode": "13 Mun., 1 City and 189 Bgys",
+        "provCode": "3,330,143"
+    },
+    {
+        "id": "Marinduque",
+        "psgcCode": "1704000000",
+        "provDesc": "174000000",
+        "regCode": "6 Mun. and 218 Bgys",
+        "provCode": "239,207"
+    },
+    {
+        "id": "Occidental Mindoro",
+        "psgcCode": "1705100000",
+        "provDesc": "175100000",
+        "regCode": "11 Mun. and 164 Bgys",
+        "provCode": "525,354"
+    },
+    {
+        "id": "Oriental Mindoro",
+        "psgcCode": "1705200000",
+        "provDesc": "175200000",
+        "regCode": "14 Mun., 1 City and 426 Bgys",
+        "provCode": "908,339"
+    },
+    {
+        "id": "Palawan",
+        "psgcCode": "1705300000",
+        "provDesc": "175300000",
+        "regCode": "23 Mun. and 367 Bgys",
+        "provCode": "939,594"
+    },
+    {
+        "id": "Romblon",
+        "psgcCode": "1705900000",
+        "provDesc": "175900000",
+        "regCode": "17 Mun. and 219 Bgys",
+        "provCode": "308,985"
+    },
+    {
+        "id": "Albay",
+        "psgcCode": "0500500000",
+        "provDesc": "050500000",
+        "regCode": "15 Mun., 3 Cities and 720 Bgys",
+        "provCode": "1,374,768"
+    },
+    {
+        "id": "Camarines Norte",
+        "psgcCode": "0501600000",
+        "provDesc": "051600000",
+        "regCode": "12 Mun. and 282 Bgys",
+        "provCode": "629,699"
+    },
+    {
+        "id": "Camarines Sur",
+        "psgcCode": "0501700000",
+        "provDesc": "051700000",
+        "regCode": "35 Mun., 2 Cities and 1063 Bgys",
+        "provCode": "2,068,244"
+    },
+    {
+        "id": "Catanduanes",
+        "psgcCode": "0502000000",
+        "provDesc": "052000000",
+        "regCode": "11 Mun. and 315 Bgys",
+        "provCode": "271,879"
+    },
+    {
+        "id": "Masbate",
+        "psgcCode": "0504100000",
+        "provDesc": "054100000",
+        "regCode": "20 Mun., 1 City and 550 Bgys",
+        "provCode": "908,920"
+    },
+    {
+        "id": "Sorsogon",
+        "psgcCode": "0506200000",
+        "provDesc": "056200000",
+        "regCode": "14 Mun., 1 City and 541 Bgys",
+        "provCode": "828,655"
+    },
+    {
+        "id": "Aklan",
+        "psgcCode": "0600400000",
+        "provDesc": "060400000",
+        "regCode": "17 Mun. and 327 Bgys",
+        "provCode": "615,475"
+    },
+    {
+        "id": "Antique",
+        "psgcCode": "0600600000",
+        "provDesc": "060600000",
+        "regCode": "18 Mun. and 590 Bgys",
+        "provCode": "612,974"
+    },
+    {
+        "id": "Capiz",
+        "psgcCode": "0601900000",
+        "provDesc": "061900000",
+        "regCode": "16 Mun., 1 City and 473 Bgys",
+        "provCode": "804,952"
+    },
+    {
+        "id": "Iloilo",
+        "psgcCode": "0603000000",
+        "provDesc": "063000000",
+        "regCode": "42 Mun., 1 City and 1721 Bgys",
+        "provCode": "2,051,899"
+    },
+    {
+        "id": "Negros Occidental",
+        "psgcCode": "0604500000",
+        "provDesc": "064500000",
+        "regCode": "19 Mun., 12 Cities and 601 Bgys",
+        "provCode": "2,623,172"
+    },
+    {
+        "id": "Guimaras",
+        "psgcCode": "0607900000",
+        "provDesc": "067900000",
+        "regCode": "5 Mun. and 98 Bgys",
+        "provCode": "187,842"
+    },
+    {
+        "id": "Bohol",
+        "psgcCode": "0701200000",
+        "provDesc": "071200000",
+        "regCode": "47 Mun., 1 City and 1109 Bgys",
+        "provCode": "1,394,329"
+    },
+    {
+        "id": "Cebu",
+        "psgcCode": "0702200000",
+        "provDesc": "072200000",
+        "regCode": "44 Mun., 6 Cities and 1066 Bgys",
+        "provCode": "3,325,385"
+    },
+    {
+        "id": "Negros Oriental",
+        "psgcCode": "0704600000",
+        "provDesc": "074600000",
+        "regCode": "19 Mun., 6 Cities and 557 Bgys",
+        "provCode": "1,432,990"
+    },
+    {
+        "id": "Siquijor",
+        "psgcCode": "0706100000",
+        "provDesc": "076100000",
+        "regCode": "6 Mun. and 134 Bgys",
+        "provCode": "103,395"
+    },
+    {
+        "id": "Eastern Samar",
+        "psgcCode": "0802600000",
+        "provDesc": "082600000",
+        "regCode": "22 Mun., 1 City and 597 Bgys",
+        "provCode": "477,168"
+    },
+    {
+        "id": "Leyte",
+        "psgcCode": "0803700000",
+        "provDesc": "083700000",
+        "regCode": "40 Mun., 2 Cities and 1478 Bgys",
+        "provCode": "1,776,847"
+    },
+    {
+        "id": "Northern Samar",
+        "psgcCode": "0804800000",
+        "provDesc": "084800000",
+        "regCode": "24 Mun. and 569 Bgys",
+        "provCode": "639,186"
+    },
+    {
+        "id": "Samar",
+        "psgcCode": "0806000000",
+        "provDesc": "086000000",
+        "regCode": "24 Mun., 2 Cities and 951 Bgys",
+        "provCode": "793,183"
+    },
+    {
+        "id": "Southern Leyte",
+        "psgcCode": "0806400000",
+        "provDesc": "086400000",
+        "regCode": "18 Mun., 1 City and 500 Bgys",
+        "provCode": "429,573"
+    },
+    {
+        "id": "Biliran",
+        "psgcCode": "0807800000",
+        "provDesc": "087800000",
+        "regCode": "8 Mun. and 132 Bgys",
+        "provCode": "179,312"
+    },
+    {
+        "id": "Zamboanga del Norte",
+        "psgcCode": "0907200000",
+        "provDesc": "097200000",
+        "regCode": "25 Mun., 2 Cities and 691 Bgys",
+        "provCode": "1,047,455"
+    },
+    {
+        "id": "Zamboanga del Sur",
+        "psgcCode": "0907300000",
+        "provDesc": "097300000",
+        "regCode": "26 Mun., 1 City and 681 Bgys",
+        "provCode": "1,050,668"
+    },
+    {
+        "id": "Zamboanga Sibugay",
+        "psgcCode": "0908300000",
+        "provDesc": "098300000",
+        "regCode": "16 Mun. and 389 Bgys",
+        "provCode": "669,840"
+    },
+    {
+        "id": "Bukidnon",
+        "psgcCode": "1001300000",
+        "provDesc": "101300000",
+        "regCode": "20 Mun., 2 Cities and 464 Bgys",
+        "provCode": "1,541,308"
+    },
+    {
+        "id": "Camiguin",
+        "psgcCode": "1001800000",
+        "provDesc": "101800000",
+        "regCode": "5 Mun. and 58 Bgys",
+        "provCode": "92,808"
+    },
+    {
+        "id": "Lanao del Norte",
+        "psgcCode": "1003500000",
+        "provDesc": "103500000",
+        "regCode": "22 Mun. and 462 Bgys",
+        "provCode": "722,902"
+    },
+    {
+        "id": "Misamis Occidental",
+        "psgcCode": "1004200000",
+        "provDesc": "104200000",
+        "regCode": "14 Mun., 3 Cities and 490 Bgys",
+        "provCode": "617,333"
+    },
+    {
+        "id": "Misamis Oriental",
+        "psgcCode": "1004300000",
+        "provDesc": "104300000",
+        "regCode": "23 Mun., 2 Cities and 424 Bgys",
+        "provCode": "956,900"
+    },
+    {
+        "id": "Davao del Norte",
+        "psgcCode": "1102300000",
+        "provDesc": "112300000",
+        "regCode": "8 Mun., 3 Cities and 223 Bgys",
+        "provCode": "1,125,057"
+    },
+    {
+        "id": "Davao del Sur",
+        "psgcCode": "1102400000",
+        "provDesc": "112400000",
+        "regCode": "9 Mun., 1 City and 232 Bgys",
+        "provCode": "680,481"
+    },
+    {
+        "id": "Davao Oriental",
+        "psgcCode": "1102500000",
+        "provDesc": "112500000",
+        "regCode": "10 Mun., 1 City and 183 Bgys",
+        "provCode": "576,343"
+    },
+    {
+        "id": "Davao de Oro",
+        "psgcCode": "1108200000",
+        "provDesc": "118200000",
+        "regCode": "11 Mun. and 237 Bgys",
+        "provCode": "767,547"
+    },
+    {
+        "id": "Davao Occidental",
+        "psgcCode": "1108600000",
+        "provDesc": "118600000",
+        "regCode": "5 Mun. and 105 Bgys",
+        "provCode": "317,159"
+    },
+    {
+        "id": "Cotabato",
+        "psgcCode": "1204700000",
+        "provDesc": "124700000",
+        "regCode": "17 Mun., 1 City and 480 Bgys",
+        "provCode": "1,490,618"
+    },
+    {
+        "id": "South Cotabato",
+        "psgcCode": "1206300000",
+        "provDesc": "126300000",
+        "regCode": "10 Mun., 1 City and 199 Bgys",
+        "provCode": "975,476"
+    },
+    {
+        "id": "Sultan Kudarat",
+        "psgcCode": "1206500000",
+        "provDesc": "126500000",
+        "regCode": "11 Mun., 1 City and 249 Bgys",
+        "provCode": "854,052"
+    },
+    {
+        "id": "Sarangani",
+        "psgcCode": "1208000000",
+        "provDesc": "128000000",
+        "regCode": "7 Mun. and 142 Bgys",
+        "provCode": "558,946"
+    },
+    {
+        "id": "Agusan del Norte",
+        "psgcCode": "1600200000",
+        "provDesc": "160200000",
+        "regCode": "10 Mun., 1 City and 167 Bgys",
+        "provCode": "387,503"
+    },
+    {
+        "id": "Agusan del Sur",
+        "psgcCode": "1600300000",
+        "provDesc": "160300000",
+        "regCode": "13 Mun., 1 City and 314 Bgys",
+        "provCode": "739,367"
+    },
+    {
+        "id": "Surigao del Norte",
+        "psgcCode": "1606700000",
+        "provDesc": "166700000",
+        "regCode": "20 Mun., 1 City and 335 Bgys",
+        "provCode": "534,636"
+    },
+    {
+        "id": "Surigao del Sur",
+        "psgcCode": "1606800000",
+        "provDesc": "166800000",
+        "regCode": "17 Mun., 2 Cities and 309 Bgys",
+        "provCode": "642,255"
+    },
+    {
+        "id": "Dinagat Islands",
+        "psgcCode": "1608500000",
+        "provDesc": "168500000",
+        "regCode": "7 Mun. and 100 Bgys",
+        "provCode": "128,117"
+    },
+    {
+        "id": "Basilan",
+        "psgcCode": "1900700000",
+        "provDesc": "150700000",
+        "regCode": "11 Mun., 1 City and 210 Bgys",
+        "provCode": "426,207"
+    },
+    {
+        "id": "Lanao del Sur",
+        "psgcCode": "1903600000",
+        "provDesc": "153600000",
+        "regCode": "39 Mun., 1 City and 1161 Bgys",
+        "provCode": "1,195,518"
+    },
+    {
+        "id": "Sulu",
+        "psgcCode": "1906600000",
+        "provDesc": "156600000",
+        "regCode": "19 Mun. and 410 Bgys",
+        "provCode": "1,000,108"
+    },
+    {
+        "id": "Tawi-Tawi",
+        "psgcCode": "1907000000",
+        "provDesc": "157000000",
+        "regCode": "11 Mun. and 203 Bgys",
+        "provCode": "440,276"
+    },
+    {
+        "id": "Maguindanao del Norte",
+        "psgcCode": "1908700000",
+        "provDesc": "---",
+        "regCode": "12 Mun., 1 City and 258 Bgys",
+        "provCode": "618,421"
+    },
+    {
+        "id": "Maguindanao del Sur",
+        "psgcCode": "1908800000",
+        "provDesc": "---",
+        "regCode": "24 Mun. and 287 Bgys",
+        "provCode": "723,758"
+    }
+]

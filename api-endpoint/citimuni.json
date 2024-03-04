@@ -1,0 +1,93 @@
+[
+    {
+        "name": "Botolan",
+        "code": "0307101000",
+        "correspondenceCode": "037101000",
+        "incomeClass": "1st",
+        "population": "66,739"
+    },
+    {
+        "name": "Cabangan",
+        "code": "0307102000",
+        "correspondenceCode": "037102000",
+        "incomeClass": "4th",
+        "population": "28,118"
+    },
+    {
+        "name": "Candelaria",
+        "code": "0307103000",
+        "correspondenceCode": "037103000",
+        "incomeClass": "3rd",
+        "population": "30,263"
+    },
+    {
+        "name": "Castillejos",
+        "code": "0307104000",
+        "correspondenceCode": "037104000",
+        "incomeClass": "3rd",
+        "population": "67,889"
+    },
+    {
+        "name": "Iba",
+        "code": "0307105000",
+        "correspondenceCode": "037105000",
+        "incomeClass": "2nd",
+        "population": "55,581"
+    },
+    {
+        "name": "Masinloc",
+        "code": "0307106000",
+        "correspondenceCode": "037106000",
+        "incomeClass": "1st",
+        "population": "54,529"
+    },
+    {
+        "name": "Palauig",
+        "code": "0307108000",
+        "correspondenceCode": "037108000",
+        "incomeClass": "3rd",
+        "population": "39,784"
+    },
+    {
+        "name": "San Antonio",
+        "code": "0307109000",
+        "correspondenceCode": "037109000",
+        "incomeClass": "2nd",
+        "population": "37,450"
+    },
+    {
+        "name": "San Felipe",
+        "code": "0307110000",
+        "correspondenceCode": "037110000",
+        "incomeClass": "4th",
+        "population": "25,033"
+    },
+    {
+        "name": "San Marcelino",
+        "code": "0307111000",
+        "correspondenceCode": "037111000",
+        "incomeClass": "1st",
+        "population": "37,719"
+    },
+    {
+        "name": "San Narciso",
+        "code": "0307112000",
+        "correspondenceCode": "037112000",
+        "incomeClass": "4th",
+        "population": "30,759"
+    },
+    {
+        "name": "Santa Cruz",
+        "code": "0307113000",
+        "correspondenceCode": "037113000",
+        "incomeClass": "1st",
+        "population": "63,839"
+    },
+    {
+        "name": "Subic",
+        "code": "0307114000",
+        "correspondenceCode": "037114000",
+        "incomeClass": "1st",
+        "population": "111,912"
+    }
+]

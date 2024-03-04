@@ -1,0 +1,219 @@
+[
+    {
+        "name": "Bangan",
+        "code": "0307101001",
+        "correspondenceCode": "037101001",
+        "urbanRural": "Rural",
+        "population": "1,444"
+    },
+    {
+        "name": "Batonlapoc",
+        "code": "0307101003",
+        "correspondenceCode": "037101003",
+        "urbanRural": "Rural",
+        "population": "1,455"
+    },
+    {
+        "name": "Beneg",
+        "code": "0307101004",
+        "correspondenceCode": "037101004",
+        "urbanRural": "Rural",
+        "population": "1,969"
+    },
+    {
+        "name": "Capayawan",
+        "code": "0307101005",
+        "correspondenceCode": "037101005",
+        "urbanRural": "Rural",
+        "population": "1,187"
+    },
+    {
+        "name": "Carael",
+        "code": "0307101006",
+        "correspondenceCode": "037101006",
+        "urbanRural": "Rural",
+        "population": "2,405"
+    },
+    {
+        "name": "Danacbunga",
+        "code": "0307101007",
+        "correspondenceCode": "037101007",
+        "urbanRural": "Rural",
+        "population": "3,053"
+    },
+    {
+        "name": "Maguisguis",
+        "code": "0307101008",
+        "correspondenceCode": "037101008",
+        "urbanRural": "Rural",
+        "population": "598"
+    },
+    {
+        "name": "Mambog",
+        "code": "0307101009",
+        "correspondenceCode": "037101009",
+        "urbanRural": "Rural",
+        "population": "4,524"
+    },
+    {
+        "name": "Moraza",
+        "code": "0307101010",
+        "correspondenceCode": "037101010",
+        "urbanRural": "Rural",
+        "population": "453"
+    },
+    {
+        "name": "Paco",
+        "code": "0307101011",
+        "correspondenceCode": "037101011",
+        "urbanRural": "Rural",
+        "population": "1,935"
+    },
+    {
+        "name": "Panan",
+        "code": "0307101013",
+        "correspondenceCode": "037101013",
+        "urbanRural": "Rural",
+        "population": "2,926"
+    },
+    {
+        "name": "Parel",
+        "code": "0307101014",
+        "correspondenceCode": "037101014",
+        "urbanRural": "Rural",
+        "population": "1,257"
+    },
+    {
+        "name": "Paudpod",
+        "code": "0307101015",
+        "correspondenceCode": "037101015",
+        "urbanRural": "Rural",
+        "population": "946"
+    },
+    {
+        "name": "Poonbato",
+        "code": "0307101016",
+        "correspondenceCode": "037101016",
+        "urbanRural": "Rural",
+        "population": "1,333"
+    },
+    {
+        "name": "Porac",
+        "code": "0307101017",
+        "correspondenceCode": "037101017",
+        "urbanRural": "Rural",
+        "population": "3,579"
+    },
+    {
+        "name": "San Isidro",
+        "code": "0307101018",
+        "correspondenceCode": "037101018",
+        "urbanRural": "Rural",
+        "population": "1,802"
+    },
+    {
+        "name": "San Juan",
+        "code": "0307101019",
+        "correspondenceCode": "037101019",
+        "urbanRural": "Urban",
+        "population": "8,856"
+    },
+    {
+        "name": "San Miguel",
+        "code": "0307101020",
+        "correspondenceCode": "037101020",
+        "urbanRural": "Rural",
+        "population": "1,518"
+    },
+    {
+        "name": "Santiago",
+        "code": "0307101021",
+        "correspondenceCode": "037101021",
+        "urbanRural": "Rural",
+        "population": "2,331"
+    },
+    {
+        "name": "Tampo",
+        "code": "0307101022",
+        "correspondenceCode": "037101022",
+        "urbanRural": "Rural",
+        "population": "1,827"
+    },
+    {
+        "name": "Taugtog",
+        "code": "0307101023",
+        "correspondenceCode": "037101023",
+        "urbanRural": "Urban",
+        "population": "14,122"
+    },
+    {
+        "name": "Villar",
+        "code": "0307101024",
+        "correspondenceCode": "037101024",
+        "urbanRural": "Rural",
+        "population": "669"
+    },
+    {
+        "name": "Bancal",
+        "code": "0307101025",
+        "correspondenceCode": "037101025",
+        "urbanRural": "Rural",
+        "population": "1,146"
+    },
+    {
+        "name": "Belbel",
+        "code": "0307101026",
+        "correspondenceCode": "037101026",
+        "urbanRural": "Rural",
+        "population": "376"
+    },
+    {
+        "name": "Binoclutan",
+        "code": "0307101027",
+        "correspondenceCode": "037101027",
+        "urbanRural": "Rural",
+        "population": "1,239"
+    },
+    {
+        "name": "Burgos",
+        "code": "0307101028",
+        "correspondenceCode": "037101028",
+        "urbanRural": "Rural",
+        "population": "741"
+    },
+    {
+        "name": "Cabatuan",
+        "code": "0307101029",
+        "correspondenceCode": "037101029",
+        "urbanRural": "Rural",
+        "population": "814"
+    },
+    {
+        "name": "Malomboy",
+        "code": "0307101030",
+        "correspondenceCode": "037101030",
+        "urbanRural": "Rural",
+        "population": "864"
+    },
+    {
+        "name": "Nacolcol",
+        "code": "0307101031",
+        "correspondenceCode": "037101031",
+        "urbanRural": "Rural",
+        "population": "495"
+    },
+    {
+        "name": "Owaog-Nebloc",
+        "code": "0307101032",
+        "correspondenceCode": "037101032",
+        "urbanRural": "Rural",
+        "population": "420"
+    },
+    {
+        "name": "Palis",
+        "code": "0307101033",
+        "correspondenceCode": "037101033",
+        "urbanRural": "Rural",
+        "population": "455"
+    }
+]
