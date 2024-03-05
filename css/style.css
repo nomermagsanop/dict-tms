@@ -314,7 +314,7 @@ input[type="radio"]:hover {
 }
  
 #preloader {
-    background-image: url('flatDark261.png');
+    background-image: url('../img/flatDark261.png');
     width: 120px;
     height: 120px;
     border-top-color: #fff;
