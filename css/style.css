@@ -109,7 +109,8 @@ label {
  
 button#prev-btn,
 button#next-btn,
-button#submit-btn {
+button#submit-btn,
+button#login-btn {
     font-size: 17px;
     font-weight: bold;
     position: relative;
@@ -135,7 +136,8 @@ button#submit-btn {
  
 button#prev-btn:after,
 button#next-btn:after,
-button#submit-btn:after {
+button#submit-btn:after,
+button#login-btn:after {
     position: absolute;
     top: 90%;
     left: 0;
@@ -149,7 +151,8 @@ button#submit-btn:after {
  
 button#prev-btn:hover::after,
 button#next-btn:hover::after,
-button#submit-btn:hover::after {
+button#submit-btn:hover::after,
+button#login-btn:hover::after {
     transform: translateY(-80%);
     transition: transform .3s;
 }

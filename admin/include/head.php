@@ -1,3 +1,9 @@
+<?php 
+require 'function/check_session.php';
+
+// Call the checkSession function to perform session validation
+checkSession();
+?>
 <head>
 
     <meta charset="utf-8">

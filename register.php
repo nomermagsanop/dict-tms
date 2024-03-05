@@ -9,7 +9,7 @@
       <!-- CSS -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-      <link href="style.css" rel="stylesheet">
+      <link href="css/style.css" rel="stylesheet">
       <!-- FONT -->
 
       <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -45,7 +45,7 @@
                <div id="qbox-container" class="">
                   <form class="needs-validation" id="form-wrapper" method="post" name="form-wrapper" novalidate="" method="POST">
                      <div id="steps-container">
-                        <div class="step">
+                        <div class="step col-12">
                            <h4>Provide us with your personal information:</h4>
                            <div class="mt-1">
                               <label class="form-label">First Name:</label><span class="text-danger">*</span>
@@ -95,7 +95,7 @@
                               </div>
                            </div>
                         </div>
-                        <div class="step">
+                        <div class="step col-12">
                            <h4>Provide us with your contact information:</h4>
                            <div class="mt-1">
                               <label class="form-label">Email Address:</label><span class="text-danger">*</span> 
@@ -148,7 +148,7 @@
                            </div>
                         </div>
 
-                        <div class="step">
+                        <div class="step col-12">
                            <h4>Provide us with your account information:</h4>
                            <div class="mt-1">
                               <label class="form-label">Username:</label><span class="text-danger">*</span> 
@@ -163,7 +163,7 @@
                               <input class="form-control" name="confirm_password" type="password" required>
                            </div>
                         </div>
-                        <div class="step">
+                        <div class="step col-12">
                            <div class="mt-1">
                               <div class="closing-text">
                                  <h4>That's about it!</h4>
@@ -174,9 +174,9 @@
                         </div>
                         <div id="success">
                            <div class="mt-5">
-                              <h4>Success! You can now sign-in your account!</h4>
+                              <h4>Success! You can now login your account!</h4>
                               <!-- <p>Meanwhile, clean your hands often, use soap and water, or an alcohol-based hand rub, maintain a safe distance from anyone who is coughing or sneezing and always wear a mask when physical distancing is not possible.</p> -->
-                              <a class="back-link" href="login.php">Go to sign-in page. ➜</a>
+                              <a class="back-link" href="login.php">Go to login page. ➜</a>
                            </div>
                         </div>
                      </div>
@@ -186,6 +186,8 @@
                         <button id="submit-btn" type="submit">Submit</button>
                      </div>
                   </form>
+                  <hr>
+                  <p class="text-center">Already own an account? <span><a href="login.php">Login!</a></span></p>
                </div>
             </div>
          </div>
@@ -197,6 +199,6 @@
          <div class="preloader-section section-right"></div>
       </div>
 
-      <script src="script.js"></script>
+      <script src="js/script.js"></script>
    </body>
 </html>
