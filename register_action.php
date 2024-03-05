@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = isset($_POST['password']) ? password_hash(sanitizeInput($_POST['password']), PASSWORD_DEFAULT) : '';
 
     // Construct the SQL query
-    $sql = "INSERT INTO users (first_name, mid_name, last_name, ext_name, age, sex, email, contact, barangay, municipality, province, host_id, username, password, role) VALUES ('$first_name', '$mid_name', '$last_name', '$ext_name', '$age', '$sex', '$email', '$contact', '$barangay', '$municipality', '$province', '$host_id', '$username', '$password', 3)";
+    $sql = "INSERT INTO users (first_name, mid_name, last_name, ext_name, age, sex, email, contact, barangay, municipality, province, host_id, username, password, role, status) VALUES ('$first_name', '$mid_name', '$last_name', '$ext_name', '$age', '$sex', '$email', '$contact', '$barangay', '$municipality', '$province', '$host_id', '$username', '$password', 3, 'active')";
 
     // Execute the SQL statement
     if ($con->query($sql) === TRUE) {

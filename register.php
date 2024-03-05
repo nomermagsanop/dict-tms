@@ -121,7 +121,7 @@
                               <label class="form-label">Field Office:</label><span class="text-danger">*</span>
                               <div id="">
                                  <select name="host_id" class="form-select" required>
-                                    <option disabled selected>Select field office</option>
+                                    <option value="" disabled selected>Select field office</option>
 
                                      <?php
                                              require 'db/dbconn.php';
@@ -187,7 +187,7 @@
                      </div>
                   </form>
                   <hr>
-                  <p class="text-center">Already own an account? <span><a href="login.php">Login!</a></span></p>
+                  <p class="text-center" id="aoaa">Already own an account? <span><a href="login.php">Login!</a></span></p>
                </div>
             </div>
          </div>

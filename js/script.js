@@ -10,6 +10,7 @@ const progress = (value) => {
    let preloader = document.getElementById('preloader-wrapper');
    let bodyElement = document.querySelector('body');
    let succcessDiv = document.getElementById('success');
+   let aoaa = document.getElementById('aoaa');
  
    form.onsubmit = () => { return false }
 
@@ -48,41 +49,75 @@ nextBtn.addEventListener('click', () => {
 
     // Proceed to the next step if all required fields are filled
     if (fieldsAreValid) {
-        // Proceed with additional checks only if in the step where password and confirm password are entered
-        if (current_step === 2) {
-            // Check if passwords match
-            const password = document.querySelector('input[name="password"]').value;
-            const confirmPassword = document.querySelector('input[name="confirm_password"]').value;
-            if (password !== confirmPassword) {
-                showWarningMessage("Passwords don't match. Please check and try again.");
-                document.querySelector('input[name="confirm_password"]').style.border = '1px solid red'; // Add red border to confirm password field
-                return; // Exit the function if passwords don't match
-            } else {
-                document.querySelector('input[name="confirm_password"]').style.border = ''; // Remove red border if passwords match
-            }
-        }
+        // Proceed with additional checks only if in the step where email is entered
+        if (current_step === 1) {
+            // Check if email already exists in the database
+            const email = document.querySelector('input[name="email"]').value;
+            const formData = new FormData();
+            formData.append('email', email);
 
-        current_step++;
-        let previous_step = current_step - 1;
-        if ((current_step > 0) && (current_step <= stepCount)) {
-            prevBtn.classList.remove('d-none');
-            prevBtn.classList.add('d-inline-block');
-            step[current_step].classList.remove('d-none');
-            step[current_step].classList.add('d-block');
-            step[previous_step].classList.remove('d-block');
-            step[previous_step].classList.add('d-none');
-            if (current_step == stepCount) {
-                submitBtn.classList.remove('d-none');
-                submitBtn.classList.add('d-inline-block');
-                nextBtn.classList.remove('d-inline-block');
-                nextBtn.classList.add('d-none');
-            }
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'check_email.php', true);
+            xhr.onload = function () {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.hasOwnProperty('exists')) {
+                        if (response.exists) {
+                            showWarningMessage('Email already exists. Please use a different email.');
+                            document.querySelector('input[name="email"]').style.border = '1px solid red'; // Add red border to email field
+                        } else {
+                            document.querySelector('input[name="email"]').style.border = ''; // Remove red border if email doesn't exist
+                            goToNextStep(); // Proceed to the next step if email doesn't exist
+                        }
+                    } else {
+                        showWarningMessage('Invalid response received from server.');
+                    }
+                } else {
+                    showWarningMessage('Failed to check email. Please try again later.');
+                    console.error(xhr.responseText);
+                }
+            };
+            xhr.onerror = function () {
+                showWarningMessage('Failed to check email. Please try again later.');
+                console.error(xhr.statusText);
+            };
+            xhr.send(formData);
+        } else if (current_step === 2) {
+            // Check if username already exists in the database
+            const username = document.querySelector('input[name="username"]').value;
+            const formData = new FormData();
+            formData.append('username', username);
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'check_username.php', true);
+            xhr.onload = function () {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.hasOwnProperty('exists')) {
+                        if (response.exists) {
+                            showWarningMessage('Username already exists. Please choose a different username.');
+                            document.querySelector('input[name="username"]').style.border = '1px solid red'; // Add red border to username field
+                        } else {
+                            document.querySelector('input[name="username"]').style.border = ''; // Remove red border if username doesn't exist
+                            goToNextStep(); // Proceed to the next step if username doesn't exist
+                        }
+                    } else {
+                        showWarningMessage('Invalid response received from server.');
+                    }
+                } else {
+                    showWarningMessage('Failed to check username. Please try again later.');
+                    console.error(xhr.responseText);
+                }
+            };
+            xhr.onerror = function () {
+                showWarningMessage('Failed to check username. Please try again later.');
+                console.error(xhr.statusText);
+            };
+            xhr.send(formData);
         } else {
-            if (current_step > stepCount) {
-                form.onsubmit = () => { return true; };
-            }
+            // Proceed with other checks if not in the email or username step
+            goToNextStep(); // Proceed to the next step directly
         }
-        progress((100 / stepCount) * current_step);
     } else {
         // If any required field is empty, show SweetAlert2 popup
         Swal.fire({
@@ -92,6 +127,46 @@ nextBtn.addEventListener('click', () => {
         });
     }
 });
+
+// Function to proceed to the next step
+function goToNextStep() {
+    // Proceed with additional checks only if in the step where password and confirm password are entered
+    if (current_step === 2) {
+        // Check if passwords match
+        const password = document.querySelector('input[name="password"]').value;
+        const confirmPassword = document.querySelector('input[name="confirm_password"]').value;
+        if (password !== confirmPassword) {
+            showWarningMessage("Passwords don't match. Please check and try again.");
+            document.querySelector('input[name="confirm_password"]').style.border = '1px solid red'; // Add red border to confirm password field
+            return; // Exit the function if passwords don't match
+        } else {
+            document.querySelector('input[name="confirm_password"]').style.border = ''; // Remove red border if passwords match
+        }
+    }
+
+    // Proceed to the next step
+    current_step++;
+    let previous_step = current_step - 1;
+    if ((current_step > 0) && (current_step <= stepCount)) {
+        prevBtn.classList.remove('d-none');
+        prevBtn.classList.add('d-inline-block');
+        step[current_step].classList.remove('d-none');
+        step[current_step].classList.add('d-block');
+        step[previous_step].classList.remove('d-block');
+        step[previous_step].classList.add('d-none');
+        if (current_step == stepCount) {
+            submitBtn.classList.remove('d-none');
+            submitBtn.classList.add('d-inline-block');
+            nextBtn.classList.remove('d-inline-block');
+            nextBtn.classList.add('d-none');
+        }
+    } else {
+        if (current_step > stepCount) {
+            form.onsubmit = () => { return true; };
+        }
+    }
+    progress((100 / stepCount) * current_step);
+}
 
 
    prevBtn.addEventListener('click', () => {
@@ -148,6 +223,7 @@ nextBtn.addEventListener('click', () => {
                             submitBtn.classList.add('d-none');
                             succcessDiv.classList.remove('d-none');
                             succcessDiv.classList.add('d-block');
+                            aoaa.classList.add('d-none');
                         });
                 } else {
                     // If AJAX request is successful but response indicates error, show SweetAlert error message
