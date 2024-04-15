@@ -38,14 +38,15 @@
                     <label for="ext_name">Ext. Name</label>
                 </div>
                  <div class="col-sm-8">
-                    <select class="form-control" id="" name="ext_name" >
-                        <option value="">Extension Name</option>
-                        <option value="jr">Jr.</option>
-                        <option value="i">I</option>
-                        <option value="ii">II</option>
-                        <option value="iii">III</option>
-                        <option value="iv">IV</option>
-                        <option value="v">V</option>
+                    <select class="form-control" id="" name="ext_name">
+                        <option value="" selected disabled>--Extension Name--</option>
+                        <option value="JR">Jr.</option>
+                        <option value="SR">Sr.</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                        <option value="IV">IV</option>
+                        <option value="V">V</option>
                     </select>
                 </div>
                 </div>
@@ -55,9 +56,8 @@
                     </div>
                    <div class="col-sm-8">
                     <div class="custom-file">
-                     <input type="file" class="custom-file-input" id="inputupload" name="inputupload" aria-describedby="inputuploadAddon">
-
-                    <label class="custom-file-label" for="inputupload">Choose file</label>
+                        <input type="file" class="custom-file-input" id="inputupload" name="inputupload" aria-describedby="inputuploadAddon" required>
+                        <label class="custom-file-label" for="inputupload">Choose file</label>
                     </div>
                   </div>
               </div>       

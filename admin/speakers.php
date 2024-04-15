@@ -24,8 +24,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Speakers</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <a href="deleted_speakers.php" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-trash fa-sm"></i> Archive</a>
                     </div>
 
         <!-- Content Row -->
@@ -209,43 +208,76 @@
 
 <script>
     $(document).ready(function() {
+        // Function to show SweetAlert2 warning message
+        const showWarningMessage = (message) => {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: message
+            });
+        };
+
         $('#addSpeaker').on('click', function(e) {
             e.preventDefault(); // Prevent default form submission
-            var formData = $('#addnew form').serialize(); // Serialize form data
+            var formData = new FormData($('#addnew form')[0]); // Create FormData object with form data
 
-            $.ajax({
-                file: 'action/add_speaker.php', // file to submit the form data
-                type: 'POST',
-                data: formData, // Form data to be submitted
-                success: function(response) {
-                    // Handle the success response
-                    console.log(response); // Output response to console (for debugging)
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Speaker added successfully',
-                        showConfirmButton: true, // Show OK button
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        location.reload();
-                    });   
-                },
-                error: function(xhr, status, error) {
-                    // Handle the error response
-                    console.error(xhr.responseText); // Output error response to console (for debugging)
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Failed to add Speaker',
-                        text: 'Please try again later.',
-                        showConfirmButton: true, // Show OK button
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        location.reload();
-                    }); 
+            const requiredFields = $('input[required], select[required]', $('#addnew')); // Select required fields
+
+            let fieldsAreValid = true; // Initialize as true
+
+            // Remove existing error classes
+            $('.form-control').removeClass('input-error');
+
+            requiredFields.each(function() {
+                const fieldName = $(this).attr('name'); // Get field name
+                const fieldValue = formData.getAll(fieldName).join(''); // Get field value from formData
+                if (fieldValue.trim() === '') {
+                    fieldsAreValid = false; // Set to false if any required field is empty
+                    showWarningMessage('Please fill-up the required fields.');
+                    $(this).addClass('input-error'); // Add red border to missing field
+                } else {
+                    $(this).removeClass('input-error'); // Remove red border if field is filled
                 }
             });
+
+            if (fieldsAreValid) {
+                $.ajax({
+                    url: 'action/add_speaker.php', // Corrected the 'file' property to 'url'
+                    type: 'POST',
+                    data: formData, // Form data to be submitted
+                    contentType: false, // Important: Prevent jQuery from setting contentType
+                    processData: false, // Important: Prevent jQuery from processing data
+                    success: function(response) {
+                        // Handle the success response
+                        console.log(response); // Output response to console (for debugging)
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Speaker added successfully',
+                            showConfirmButton: true, // Show OK button
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            location.reload();
+                        });   
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle the error response
+                        console.error(xhr.responseText); // Output error response to console (for debugging)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Failed to add Speaker',
+                            text: 'Please try again later.',
+                            showConfirmButton: true, // Show OK button
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            location.reload();
+                        }); 
+                    }
+                });
+            }
         });
     });
 </script>
+
 <script>
     $(document).ready(function() {
         // For dynamically rendered modals
