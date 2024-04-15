@@ -188,7 +188,6 @@ require './function/encrypt_decrypt.php';
     })
 
     });
-
 </script>
 
 <script>
@@ -357,43 +356,93 @@ require './function/encrypt_decrypt.php';
 
 <script>
     $(document).ready(function() {
+        // Function to show SweetAlert2 warning message
+        const showWarningMessage = (message) => {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: message
+            });
+        };
+
         $('#addEvent').on('click', function(e) {
             e.preventDefault(); // Prevent default form submission
-            var formData = $('#addnew form').serialize(); // Serialize form data
 
-            $.ajax({
-                url: 'action/add_event.php', // URL to submit the form data
-                type: 'POST',
-                data: formData, // Form data to be submitted
-                success: function(response) {
-                    // Handle the success response
-                    console.log(response); // Output response to console (for debugging)
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Event added successfully',
-                        showConfirmButton: true, // Show OK button
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        location.reload();
-                    });   
-                },
-                error: function(xhr, status, error) {
-                    // Handle the error response
-                    console.error(xhr.responseText); // Output error response to console (for debugging)
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Failed to add event',
-                        text: 'Please try again later.',
-                        showConfirmButton: true, // Show OK button
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        location.reload();
-                    }); 
+            var formData = $('#addnew form'); // Select the form element
+
+            const requiredFields = formData.find(':input[required]').not('select');
+            let fieldsAreValid = true; // Initialize as true
+
+            // Remove existing error classes
+            $('.form-control').removeClass('input-error');
+
+            // Check if department_id is empty or has no selected value
+            const speakerID = formData.find('select[name="speaker_id"]').val();
+            if (!speakerID || speakerID === '') {
+                fieldsAreValid = false; // Set to false if department_id is empty
+                showWarningMessage('Please select a speaker.');
+                formData.find('select[name="speaker_id"]').addClass('input-error');
+            } else {
+                formData.find('select[name="speaker_id"]').removeClass('input-error');
+            }
+
+            // Check if department_id is empty or has no selected value
+            const hostID = formData.find('select[name="host_id"]').val();
+            if (!hostID || hostID === '') {
+                fieldsAreValid = false; // Set to false if department_id is empty
+                showWarningMessage('Please select a host office.');
+                formData.find('select[name="host_id"]').addClass('input-error');
+            } else {
+                formData.find('select[name="host_id"]').removeClass('input-error');
+            }
+
+            requiredFields.each(function() {
+                if ($(this).val().trim() === '') {
+                    fieldsAreValid = false; // Set to false if any required field is empty
+                    showWarningMessage('Please fill-up the required fields.');
+                    $(this).addClass('input-error'); // Add red border to missing field
+                } else {
+                    $(this).removeClass('input-error'); // Remove red border if field is filled
                 }
             });
+
+            if (fieldsAreValid) {
+                // If department doesn't exist, proceed with form submission
+                $.ajax({
+                    url: 'action/add_event.php', // URL to submit the form data
+                    type: 'POST',
+                    data: formData.serialize(), // Serialize form data
+                    success: function(response) {
+                        // Handle the success response
+                        console.log(response); // Output response to console (for debugging)
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Event added successfully',
+                            showConfirmButton: true, // Show OK button
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            location.reload();
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle the error response
+                        console.error(xhr.responseText); // Output error response to console (for debugging)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Failed to add event',
+                            text: 'Please try again later.',
+                            showConfirmButton: true, // Show OK button
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            location.reload();
+                        });
+                    }
+                });
+            }
         });
     });
 </script>
+
 <script>
     $(document).ready(function() {
         // For dynamically rendered modals
@@ -435,8 +484,6 @@ require './function/encrypt_decrypt.php';
         });
     });
 </script>
-
-
 
 </body>
 
