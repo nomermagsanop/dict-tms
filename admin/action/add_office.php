@@ -4,7 +4,7 @@ require '../../db/dbconn.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
-    $office = mysqli_real_escape_string($con, $_POST['office']);
+    $office = strtoupper(mysqli_real_escape_string($con, $_POST['office']));
 
     // SQL query to insert new event
     $sql = "INSERT INTO host_office (office)

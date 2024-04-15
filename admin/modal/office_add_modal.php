@@ -14,7 +14,7 @@
 						<label class="control-label modal-label">Office Name</label>
 					</div>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" name="office" value="" placeholder="Input office name.." required>
+						<textarea class="form-control" name="office" rows="4" placeholder="Input office name.." required></textarea>
 					</div>
 				</div>
             </div> 

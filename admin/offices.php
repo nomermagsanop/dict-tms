@@ -26,9 +26,8 @@ require './function/encrypt_decrypt.php';
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Offices</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <h1 class="h3 mb-0 text-gray-800">Host Offices</h1>
+                        <a href="deleted_offices.php" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-trash fa-sm"></i> Archive</a>
                     </div>
 
         <!-- Content Row -->
@@ -41,10 +40,9 @@ require './function/encrypt_decrypt.php';
                     <!-- Card Header - Dropdown -->
                     <div
                         class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">List of Offices</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">List of Host Offices</h6>
                         <div>
                             <a class="btn btn-sm btn-success shadow-sm" data-toggle="modal" data-target="#addnew"><i class="fas fa-plus fa-sm text-white-50"></i> Add Office</a>
-                            <a href="deleted_offices.php" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-trash fa-sm text-white-50"></i> Archived Offices</a>
                         </div>
                     </div>
                     <!-- Card Body -->
@@ -208,43 +206,73 @@ require './function/encrypt_decrypt.php';
 
 <script>
     $(document).ready(function() {
+        // Function to show SweetAlert2 warning message
+        const showWarningMessage = (message) => {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: message
+            });
+        };
+
         $('#addOffice').on('click', function(e) {
             e.preventDefault(); // Prevent default form submission
-            var formData = $('#addnew form').serialize(); // Serialize form data
 
-            $.ajax({
-                url: 'action/add_office.php', // URL to submit the form data
-                type: 'POST',
-                data: formData, // Form data to be submitted
-                success: function(response) {
-                    // Handle the success response
-                    console.log(response); // Output response to console (for debugging)
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Office added successfully',
-                        showConfirmButton: true, // Show OK button
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        location.reload();
-                    });   
-                },
-                error: function(xhr, status, error) {
-                    // Handle the error response
-                    console.error(xhr.responseText); // Output error response to console (for debugging)
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Failed to add office',
-                        text: 'Please try again later.',
-                        showConfirmButton: true, // Show OK button
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        location.reload();
-                    }); 
+            var formData = $('#addnew form'); // Select the form element
+
+            const requiredFields = formData.find(':input[required]').not('select');
+            let fieldsAreValid = true; // Initialize as true
+
+            // Remove existing error classes
+            $('.form-control').removeClass('input-error');
+
+            requiredFields.each(function() {
+                if ($(this).val().trim() === '') {
+                    fieldsAreValid = false; // Set to false if any required field is empty
+                    showWarningMessage('Please fill-up the required fields.');
+                    $(this).addClass('input-error'); // Add red border to missing field
+                } else {
+                    $(this).removeClass('input-error'); // Remove red border if field is filled
                 }
             });
+
+            if (fieldsAreValid) {
+                // If department doesn't exist, proceed with form submission
+                $.ajax({
+                    url: 'action/add_office.php', // URL to submit the form data
+                    type: 'POST',
+                    data: formData.serialize(), // Serialize form data
+                    success: function(response) {
+                        // Handle the success response
+                        console.log(response); // Output response to console (for debugging)
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Office added successfully',
+                            showConfirmButton: true, // Show OK button
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            location.reload();
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle the error response
+                        console.error(xhr.responseText); // Output error response to console (for debugging)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Failed to add office',
+                            text: 'Please try again later.',
+                            showConfirmButton: true, // Show OK button
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            location.reload();
+                        });
+                    }
+                });
+            }
         });
     });
 </script>
+
 <script>
     $(document).ready(function() {
         // For dynamically rendered modals

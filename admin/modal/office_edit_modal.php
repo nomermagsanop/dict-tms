@@ -15,7 +15,7 @@
 						<label class="control-label modal-label">Office Name</label>
 					</div>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" name="office" value="<?php echo $office; ?>">
+						<textarea class="form-control" name="office" rows="4" required><?php echo $office; ?></textarea>
 					</div>
 				</div>
             </div> 
