@@ -51,6 +51,7 @@
                                       
                                         <th scope="col">#</th>                                        
                                         <th scope="col">Name</th>                                               
+                                        <th scope="col">Organization</th>                                               
                                         <th scope="col">Action</th>                             
                                        
                                     </tr>
@@ -72,13 +73,16 @@
                                 $mid_name = $row['mid_name'];
                                 $last_name = $row['last_name'];
                                 $ext_name = $row['ext_name'];
-                                $upload_file = $row['upload_url'];
+                                $organization = $row['organization'];
+                                $profile = $row['profile'];
+                                $sign = $row['sign'];
 
                                 $speaker_name = $row['first_name'] . ' ' . $row['mid_name'] . ' ' . $row['last_name'] . ' ' . $row['ext_name'];
                             ?>
                             <tr>         
                                 <td class=""><?php echo $counter; ?></td>
                                 <td class=""><?php echo $speaker_name; ?></td>
+                                <td class=""><?php echo $organization; ?></td>
                                
                                 <td class="text-center">
                                     <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#edit_<?php echo $speaker_id; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
@@ -208,6 +212,10 @@
 
 <script>
     $(document).ready(function() {
+        // Variable to track if the profile picture is changed
+        let profileValid = false;
+        let signValid = false;
+
         // Function to show SweetAlert2 warning message
         const showWarningMessage = (message) => {
             Swal.fire({
@@ -217,8 +225,74 @@
             });
         };
 
+        // Function to handle file input change event for profile picture
+        $('#profileUpload').on('change', function() {
+            const fileInput = $(this)[0];
+            const file = fileInput.files[0];
+
+            // Update the label text with the selected file name
+            $(this).next('#profileLabel').text(file.name);
+
+            // Set profileValid to true when a new profile picture is selected
+            profileValid = true;
+
+            // Check if the file type is allowed
+            const allowedTypes = ['image/png', 'image/jpeg', 'image/webp'];
+            if (allowedTypes.includes(file.type)) {
+                // Read the selected file and display the preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#profilePreview').attr('src', e.target.result); // Set image source to preview element
+                    $('input[name="profile"]').removeClass('input-error');
+                    $('.custom-file-label[for="profileUpload"]').removeClass('input-error'); // Add input-error class to the label as well
+                };
+                reader.readAsDataURL(file);
+            } else {
+                // Show warning message for invalid file type
+                showWarningMessage('Please select a valid image file (PNG, JPG, WEBP).');
+                profileValid = false;
+                $('#profileUpload').val(''); // Clear the file input
+                $('input[name="profile"]').addClass('input-error');
+                $('.custom-file-label[for="profileUpload"]').addClass('input-error'); // Add input-error class to the label as well
+            }
+        });
+
+        // Function to handle file input change event for profile picture
+        $('#signUpload').on('change', function() {
+            const fileInput = $(this)[0];
+            const file = fileInput.files[0];
+
+            // Update the label text with the selected file name
+            $(this).next('#signLabel').text(file.name);
+
+            // Set profileValid to true when a new profile picture is selected
+            signValid = true;
+
+            // Check if the file type is allowed
+            const allowedTypes = ['image/png', 'image/jpeg', 'image/webp'];
+            if (allowedTypes.includes(file.type)) {
+                // Read the selected file and display the preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#signPreview').attr('src', e.target.result); // Set image source to preview element
+                    $('input[name="sign"]').removeClass('input-error');
+                    $('.custom-file-label[for="signUpload"]').removeClass('input-error'); // Add input-error class to the label as well
+                };
+                reader.readAsDataURL(file);
+            } else {
+                // Show warning message for invalid file type
+                showWarningMessage('Please select a valid image file (PNG, JPG, WEBP).');
+                signValid = false;
+                $('#signUpload').val(''); // Clear the file input
+                $('input[name="sign"]').addClass('input-error');
+                $('.custom-file-label[for="signUpload"]').addClass('input-error'); // Add input-error class to the label as well
+            }
+        });
+
+        // Function to handle form submission
         $('#addSpeaker').on('click', function(e) {
             e.preventDefault(); // Prevent default form submission
+
             var formData = new FormData($('#addnew form')[0]); // Create FormData object with form data
 
             const requiredFields = $('input[required], select[required]', $('#addnew')); // Select required fields
@@ -241,6 +315,21 @@
             });
 
             if (fieldsAreValid) {
+                // Check if profile picture is changed
+                if (!profileValid) {
+                    showWarningMessage('Please upload a valid profile picture.');
+                    $('input[name="profile"]').addClass('input-error');
+                    $('.custom-file-label[for="profileUpload"]').addClass('input-error'); // Add input-error class to the label as well
+                    return; // Stop form submission
+                }
+                // Check if sign picture is changed
+                if (!signValid) {
+                    showWarningMessage('Please upload a valid digital sign.');
+                    $('input[name="sign"]').addClass('input-error');
+                    $('.custom-file-label[for="signUpload"]').addClass('input-error'); // Add input-error class to the label as well
+                    return; // Stop form submission
+                }
+
                 $.ajax({
                     url: 'action/add_speaker.php', // Corrected the 'file' property to 'url'
                     type: 'POST',
