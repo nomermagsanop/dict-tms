@@ -68,14 +68,14 @@
                                 <div class="row mb-3">
                                     <div class="col-12 d-flex justify-content-center align-items-center">
                                         <div class="image-preview-container" style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden;">
-                                            <img class="img-fluid rounded" id="profilePreview" src="../img/flatDark261.png" alt="Profile Picture Preview" style="width: 100%; height: 100%; object-fit: cover;">
+                                            <img class="img-fluid rounded" id="profilePreview" src="../img/profile.jpg" alt="Profile Picture Preview" style="width: 100%; height: 100%; object-fit: cover;">
                                         </div>
                                     </div>
                                 </div> 
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input form-control" id="profileUpload" name="profile" aria-describedby="inputuploadAddon" required>
+                                            <input type="file" class="custom-file-input form-control" id="profileUpload" name="profile" aria-describedby="inputuploadAddon" accept="image/png, image/gif, image/jpeg" required>
                                             <label class="custom-file-label" id="profileLabel" for="profileUpload">Choose an image</label>
                                         </div>
                                     </div>
@@ -88,23 +88,23 @@
                         <div class="row form-group">
                             <div class="col-lg-6 mx-0 px-0">
                                 <div class="col-12">
-                                    <label class="control-label">Digital Sign</label>
+                                    <label class="control-label">Digital Signature</label>
                                 </div>
                                 <div class="col-12">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="signUpload" name="sign" aria-describedby="inputuploadAddon" required>
+                                        <input type="file" class="custom-file-input" id="signUpload" name="sign" aria-describedby="inputuploadAddon" accept="image/png, image/gif, image/jpeg" required>
                                         <label class="custom-file-label" id="signLabel" for="signUpload">Choose an image</label>
-                                        <small class="font-italic">* Digital Sign is use to electronically sign digital certificates for every events.</small>
+                                        <small class="font-italic">* Digital Signature is use to electronically sign digital certificates for every events.</small>
                                     </div>
                                 </div> 
                             </div>
                             <div class="col-lg-6 mx-0 px-0">
                                 <div class="col-12">
-                                    <p class="control-label text-center">Digital Sign Preview</p>
+                                    <p class="control-label text-center">Digital Signature Preview</p>
                                 </div>
                                 <div class="col-12 d-flex justify-content-center align-items-center">
-                                    <div class="image-preview-container" style="width: 140px; height: 140px; border-radius: 50%; overflow: hidden;">
-                                        <img class="img-fluid" id="signPreview" src="../img/flatDark261.png" alt="Digital Sign Preview"style="width: 100%; height: 100%; object-fit: cover;">
+                                    <div class="image-preview-container rounded" style="width: 140px; height: 140px; overflow: hidden;">
+                                        <img class="img-fluid" id="signPreview" src="../img/sign.jpg" alt="Digital Sign Preview"style="width: 100%; height: 100%; object-fit: cover;">
                                     </div>
                                 </div>
                             </div>
