@@ -50,6 +50,7 @@
                                     <tr>
                                       
                                         <th scope="col">#</th>                                        
+                                        <th scope="col">Profile Picture</th>                                        
                                         <th scope="col">Name</th>                                               
                                         <th scope="col">Organization</th>                                               
                                         <th scope="col">Action</th>                             
@@ -81,6 +82,9 @@
                             ?>
                             <tr>         
                                 <td class=""><?php echo $counter; ?></td>
+                                <td class="d-flex">
+                                    <img class="mx-auto rounded" src="./upload/profile/<?php echo $profile; ?>" alt="Profile Picture" style="width: 60px; height: 60px; object-fit: cover;">
+                                </td>
                                 <td class=""><?php echo $speaker_name; ?></td>
                                 <td class=""><?php echo $organization; ?></td>
                                
