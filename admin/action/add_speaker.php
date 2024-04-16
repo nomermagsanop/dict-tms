@@ -21,8 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $file_destination1 = "../../img/speakers/" . $file_name1;
     move_uploaded_file($file_tmp1, $file_destination1);
 
-
-    
     // Handle file upload
     $file = $_FILES['sign'];
     $file_extension = pathinfo($file['name'], PATHINFO_EXTENSION);

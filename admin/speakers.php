@@ -369,16 +369,108 @@
 
 <script>
     $(document).ready(function() {
+        // Variable to track if the profile picture is changed
+        let profileValid = true;
+        let signValid = true;
+
+        // Function to show SweetAlert2 warning message
+        const showWarningMessage = (message) => {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: message
+            });
+        };
+        // Function to handle file input change event for profile picture
+        $('[id^="profileUpload_"]').on('change', function() {
+            var speakerId = $(this).attr('id').split('_')[1]; // Extract event ID
+            const fileInput = $(this)[0];
+            const file = fileInput.files[0];
+
+            // Update the label text with the selected file name
+            $(this).next('#profileLabel_' + speakerId).text(file.name);
+
+            // Check if the file type is allowed
+            const allowedTypes = ['image/png', 'image/jpeg', 'image/webp'];
+            if (allowedTypes.includes(file.type)) {
+                // Read the selected file and display the preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#profilePreview_' + speakerId).attr('src', e.target.result); // Set image source to preview element
+                    $('#profileUpload_' + speakerId).removeClass('input-error');
+                    $('#profileLabel_' + speakerId).removeClass('input-error'); // Add input-error class to the label as well
+                };
+                reader.readAsDataURL(file);
+            } else {
+                // Show warning message for invalid file type
+                showWarningMessage('Please select a valid image file (PNG, JPG, WEBP).');
+                profileValid = false;
+                $('#profileUpload_' + speakerId).val(''); // Clear the file input
+                $('#profileUpload_' + speakerId).addClass('input-error');
+                $('#profileLabel_' + speakerId).addClass('input-error'); // Add input-error class to the label as well
+            }
+        });
+
+        // Function to handle file input change event for profile picture
+        $('[id^="signUpload"]').on('change', function() {
+            var speakerId = $(this).attr('id').split('_')[1]; // Extract event ID
+            const fileInput = $(this)[0];
+            const file = fileInput.files[0];
+
+            // Update the label text with the selected file name
+            $(this).next('#signLabel_' + speakerId).text(file.name);
+
+            // Set profileValid to true when a new profile picture is selected
+            signValid = true;
+
+            // Check if the file type is allowed
+            const allowedTypes = ['image/png', 'image/jpeg', 'image/webp'];
+            if (allowedTypes.includes(file.type)) {
+                // Read the selected file and display the preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#signPreview_' + speakerId).attr('src', e.target.result); // Set image source to preview element
+                    $('#signUpload_' + speakerId).removeClass('input-error');
+                    $('#signLabel_' + speakerId).removeClass('input-error'); // Add input-error class to the label as well
+                };
+                reader.readAsDataURL(file);
+            } else {
+                // Show warning message for invalid file type
+                showWarningMessage('Please select a valid image file (PNG, JPG, WEBP).');
+                signValid = false;
+                $('#signUpload_').val(''); // Clear the file input
+                $('#signUpload_' + speakerId).addClass('input-error');
+                $('#signLabel_' + speakerId).addClass('input-error'); // Add input-error class to the label as well
+            }
+        });
+
         // For dynamically rendered modals
         $(document).on('click', '[id^="updateSpeaker_"]', function(e) {
             e.preventDefault(); // Prevent default form submission
             var speakerId = $(this).attr('id').split('_')[1]; // Extract event ID
-            var formData = $('#edit_' + speakerId + ' form').serialize(); // Serialize form data
+            var formData = new FormData($('#edit_' + speakerId + ' form')[0]);
+
+            // Check if profile picture is changed
+            if (!profileValid) {
+                showWarningMessage('Please upload a valid profile picture.');
+                $('#profileUpload_' + speakerId).addClass('input-error');
+                $('#profileLabel_' + speakerId).addClass('input-error'); // Add input-error class to the label as well
+                return; // Stop form submission
+            }
+            // Check if sign picture is changed
+            if (!signValid) {
+                showWarningMessage('Please upload a valid digital sign.');
+                $('#signUpload' + speakerId).addClass('input-error');
+                $('#signLabel' + speakerId).addClass('input-error'); // Add input-error class to the label as well
+                return; // Stop form submission
+            }
 
             $.ajax({
-                file: 'action/update_speaker.php', // file to submit the form data
+                url: 'action/update_speaker.php', // file to submit the form data
                 type: 'POST',
                 data: formData, // Form data to be submitted
+                contentType: false, // Important: Prevent jQuery from setting contentType
+                processData: false, // Important: Prevent jQuery from processing data
                 success: function(response) {
                     // Handle the success response
                     console.log(response); // Output response to console (for debugging)
@@ -407,40 +499,6 @@
             });
         });
     });
-</script>
-
-<script>
-   $(document).on('change', '#inputupload', function() {
-    console.log('File input changed'); // Debug output
-    var filesCount = $(this)[0].files.length;
-    var textbox = $(this).prev();
-
-    if (filesCount === 1) {
-        var fileName = $(this).val().split('\\').pop();
-        textbox.text(fileName);
-    } else {
-        textbox.text(filesCount + ' files selected');
-    }
-
-    if (typeof FileReader != "undefined") {
-        var dvPreview = $("#divImageMediaPreview");
-        dvPreview.html("");            
-        $(this)[0].files.forEach(function(file) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                var img = $("<img />");
-                img.attr("style", "width: 100%;");
-                img.attr("class", "rounded");
-                img.attr("src", e.target.result);
-                dvPreview.append(img);
-            }
-            reader.readAsDatafile(file);                
-        });
-    } else {
-        console.log("This browser does not support HTML5 FileReader.");
-    }
-});
-
 </script>
 
 </body>
