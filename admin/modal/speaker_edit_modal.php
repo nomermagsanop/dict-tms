@@ -68,7 +68,7 @@
                                 <div class="row mb-3">
                                     <div class="col-12 d-flex justify-content-center align-items-center">
                                         <div class="image-preview-container" style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden;">
-                                            <img class="img-fluid rounded" id="profilePreview_<?php echo $speaker_id; ?>" src="../img/speakers/<?php echo $profile; ?>" alt="Profile Picture Preview" style="width: 100%; height: 100%; object-fit: cover;">
+                                            <img class="img-fluid rounded" id="profilePreview_<?php echo $speaker_id; ?>" src="./upload/profile/<?php echo $profile; ?>" alt="Profile Picture Preview" style="width: 100%; height: 100%; object-fit: cover;">
                                         </div>
                                     </div>
                                 </div> 
@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="col-12 d-flex justify-content-center align-items-center">
                                     <div class="image-preview-container rounded" style="width: 140px; height: 140px; overflow: hidden;">
-                                        <img class="img-fluid" id="signPreview_<?php echo $speaker_id; ?>" src="./upload/<?php echo $sign; ?>" alt="Digital Sign Preview"style="width: 100%; height: 100%; object-fit: cover;">
+                                        <img class="img-fluid" id="signPreview_<?php echo $speaker_id; ?>" src="./upload/sign/<?php echo $sign; ?>" alt="Digital Sign Preview"style="width: 100%; height: 100%; object-fit: cover;">
                                     </div>
                                 </div>
                             </div>

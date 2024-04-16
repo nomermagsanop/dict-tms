@@ -14,22 +14,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $file1 = $_FILES['profile'];
     $file_extension1 = pathinfo($file1['name'], PATHINFO_EXTENSION);
     $current_datetime1 = date('YmdHis'); // Generate current datetime
-    $file_name1 = $last_name . $first_name . '_' . $current_datetime1 . '.' . $file_extension1;
+    $file_name1 = $last_name . '_' . $current_datetime1 . '.' . $file_extension1;
     $file_tmp1 = $file1['tmp_name'];
 
     // Move uploaded file to desired location
-    $file_destination1 = "../../img/speakers/" . $file_name1;
+    $file_destination1 = "../upload/profile/" . $file_name1;
     move_uploaded_file($file_tmp1, $file_destination1);
 
     // Handle file upload
     $file = $_FILES['sign'];
     $file_extension = pathinfo($file['name'], PATHINFO_EXTENSION);
     $current_datetime = date('YmdHis'); // Generate current datetime
-    $file_name = $last_name . $first_name . '_' . $current_datetime . '.' . $file_extension;
+    $file_name = $last_name . '_' . $current_datetime . '.' . $file_extension;
     $file_tmp = $file['tmp_name'];
 
     // Move uploaded file to desired location
-    $file_destination = "../upload/" . $file_name;
+    $file_destination = "../upload/sign/" . $file_name;
     move_uploaded_file($file_tmp, $file_destination);
 
 

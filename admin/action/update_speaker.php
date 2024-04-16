@@ -21,11 +21,11 @@ if (isset($_POST['speaker_id']) && is_numeric($_POST['speaker_id'])) {
         // Handle file upload for profile image
         $file1 = $_FILES['profile'];
         $file_extension1 = pathinfo($file1['name'], PATHINFO_EXTENSION);
-        $file_name1 = $last_name . $first_name . '_' . $speaker_id . '.' . $file_extension1;
+        $file_name1 = $last_name . '_' . $speaker_id . '.' . $file_extension1;
         $file_tmp1 = $file1['tmp_name'];
 
         // Move uploaded file to desired location
-        $file_destination1 = "../../img/speakers/" . $file_name1;
+        $file_destination1 = "../upload/profile/" . $file_name1;
         move_uploaded_file($file_tmp1, $file_destination1);
     }
 
@@ -34,11 +34,11 @@ if (isset($_POST['speaker_id']) && is_numeric($_POST['speaker_id'])) {
         // Handle file upload for sign image
         $file = $_FILES['sign'];
         $file_extension = pathinfo($file['name'], PATHINFO_EXTENSION);
-        $file_name = $last_name . $first_name . '_' . $speaker_id . '.' . $file_extension;
+        $file_name = $last_name . '_' . $speaker_id . '.' . $file_extension;
         $file_tmp = $file['tmp_name'];
 
         // Move uploaded file to desired location
-        $file_destination = "../upload/" . $file_name;
+        $file_destination = "../upload/sign/" . $file_name;
         move_uploaded_file($file_tmp, $file_destination);
     }
 
