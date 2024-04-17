@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $host_id = mysqli_real_escape_string($con, $_POST['host_id']);
     $event_start = mysqli_real_escape_string($con, $_POST['event_start']);
     $event_end = mysqli_real_escape_string($con, $_POST['event_end']);
-    $status = "closed"; // Default status is closed
+    $status = "pending"; // Default status is closed
 
     // SQL query to insert new event
     $sql = "INSERT INTO events (event_name, event_description, speaker_id, event_start, event_end, host_id, status)

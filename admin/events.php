@@ -109,11 +109,20 @@ require './function/encrypt_decrypt.php';
                                                                 data-event-name=".htmlspecialchars($event_name)."
                                                                 data-event-speaker=".htmlspecialchars($event_speaker)."><i class='fa-solid fa-stop'></i>
                                                               </a>";
+                                        } elseif($status = "pending"){
+                                            $status_button = "<a class='btn btn-sm btn-success start-event-btn shadow-sm'
+                                                                data-toggle='tooltip' data-placement='right' title='Open ".$event_name."'
+                                                                data-event-id=".$event_id."
+                                                                data-event-name=".htmlspecialchars($event_name)."
+                                                                data-event-speaker=".htmlspecialchars($event_speaker)."><i class='fa-solid fa-play'></i>
+                                                              </a>";
                                         }
                                         if ($status == "closed") {
                                             $status_badge = "<sup class='badge badge-secondary badge-pill'>".$status."</sup>";
                                         } elseif ($status == "started") {
                                             $status_badge = "<sup class='badge badge-success badge-pill'>".$status."</sup>";
+                                        } elseif ($status == "pending") {
+                                            $status_badge = "<sup class='badge badge-warning badge-pill'>".$status."</sup>";
                                         }
                                     ?>
                                     <tr>                                          
