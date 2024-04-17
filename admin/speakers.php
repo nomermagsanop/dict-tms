@@ -160,6 +160,7 @@
             var deleteBtn = $(this);
             var speakerId = deleteBtn.data('speaker-id');
             var speakerName = decodeURIComponent(deleteBtn.data('speaker-name'));
+
             Swal.fire({
                 title: 'Delete Speaker',
                 html: "You are about to delete the following speaker:<br><br>" +
@@ -172,7 +173,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        file: 'action/delete_speaker.php', // Adjust the file to your PHP script for deleting the event
+                        url: 'action/delete_speaker.php', // Adjust the URL to your PHP script for deleting the event
                         type: 'POST',
                         data: {
                             speaker_id: speakerId
@@ -189,7 +190,7 @@
                             } else {
                                 Swal.fire(
                                     'Error!',
-                                    'Failed to delete Speaker.',
+                                    'Failed to delete speaker.',
                                     'error'
                                 );
                             }
@@ -198,7 +199,7 @@
                             console.error(xhr.responseText);
                             Swal.fire(
                                 'Error!',
-                                'Failed to delete Speaker.',
+                                'Failed to delete speaker.',
                                 'error'
                             );
                         }
