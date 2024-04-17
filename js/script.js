@@ -211,7 +211,7 @@ function goToNextStep() {
                 if (xhr.responseText.trim() === 'success') {
                     preloader.classList.add('d-block');
                     const timer = ms => new Promise(res => setTimeout(res, ms));
-                    timer(4000)
+                    timer(2500)
                         .then(() => {
                             bodyElement.classList.add('loaded');
                         }).then(() => {
