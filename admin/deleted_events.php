@@ -125,9 +125,7 @@ require './function/encrypt_decrypt.php';
                                         <td><?php echo $event_speaker; ?></td>
                                         
                                         
-                                        <td class="text-center">
-                                            <a class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#edit_<?php echo $event_id; ?>" data-toggle="tooltip" data-placement="right" title="Edit <?php echo $event_name; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                                            
+                                        <td class="text-center">    
                                             <a href="#" class="btn btn-sm btn-info delete-event-btn shadow-sm"
                                                data-toggle="tooltip" data-placement="right" title="Delete <?php echo $event_name; ?>"
                                                data-event-id="<?php echo $event_id; ?>" 
@@ -245,50 +243,6 @@ require './function/encrypt_decrypt.php';
         });
     });
 </script>
-
-<script>
-    $(document).ready(function() {
-        // For dynamically rendered modals
-        $(document).on('click', '[id^="updateEvent_"]', function(e) {
-            e.preventDefault(); // Prevent default form submission
-            var eventId = $(this).attr('id').split('_')[1]; // Extract event ID
-            var formData = $('#edit_' + eventId + ' form').serialize(); // Serialize form data
-
-            $.ajax({
-                url: 'action/update_event.php', // URL to submit the form data
-                type: 'POST',
-                data: formData, // Form data to be submitted
-                success: function(response) {
-                    // Handle the success response
-                    console.log(response); // Output response to console (for debugging)
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Event updated successfully',
-                        showConfirmButton: true, // Show OK button
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        location.reload();
-                    });   
-                },
-                error: function(xhr, status, error) {
-                    // Handle the error response
-                    console.error(xhr.responseText); // Output error response to console (for debugging)
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Failed to update event',
-                        text: 'Please try again later.',
-                        showConfirmButton: true, // Show OK button
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        location.reload();
-                    }); 
-                }
-            });
-        });
-    });
-</script>
-
-
 
 </body>
 
