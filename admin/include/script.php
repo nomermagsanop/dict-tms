@@ -21,3 +21,38 @@
             $('#accordionSidebar').find('a[href="' + currentPage + '.php"]').closest('li').addClass('active');
         });
     </script>
+    <script>
+        $(document).ready(function(){
+            $("#logoutBtn").click(function(e){
+                e.preventDefault(); // Prevent default action of the link
+
+                $.ajax({
+                    url: "../function/logout_action.php",
+                    type: "POST",
+                    success: function(response){
+                        // Show SweetAlert2 notification with confirm button
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Logout Successful',
+                            text: 'You have been logged out successfully!',
+                            showCancelButton: false,
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                // Redirect to login page after clicking "OK"
+                                window.location.href = "../login.php";
+                            }
+                        });
+                        // Redirect to login page after successful logout
+                        setTimeout(function(){
+                        window.location.href = "../login.php";
+                        }, 1500); // Redirect after 1.5 seconds
+                    },
+                    error: function(xhr, status, error){
+                        // Handle error if any
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
