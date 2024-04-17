@@ -107,16 +107,26 @@
                            </div>
                            <div class="mt-2">
                               <label class="form-label">Province:</label><span class="text-danger">*</span> 
-                              <input class="form-control" name="province" type="text" required>
+                              <!-- <input class="form-control" name="province" type="text" required> -->
+                              <select name="province" class="form-select" required>
+                                       <option value="" disabled selected>Select a province</option>
+                                       <option value="Aurora">Aurora</option>
+                                       <option value="Bataan">Bataan</option>
+                                       <option value="Bulacan">Bulacan</option>
+                                       <option value="Nueva Ecija">Nueva Ecija</option>
+                                       <option value="Pampanga">Pampanga</option>
+                                       <option value="Tarlac">Tarlac</option>
+                                       <option value="Zambales">Zambales</option>
+                              </select>
                            </div>
-                           <div class="mt-2">
+<!--                            <div class="mt-2">
                               <label class="form-label">Municipality:</label><span class="text-danger">*</span> 
                               <input class="form-control" name="municipality" type="text" required>
                            </div>
                            <div class="mt-2">
                               <label class="form-label">Barangay:</label><span class="text-danger">*</span> 
                               <input class="form-control" name="barangay" type="text" required>
-                           </div>
+                           </div> -->
                            <div class="mt-2">
                               <label class="form-label">Field Office:</label><span class="text-danger">*</span>
                               <div id="">
