@@ -36,8 +36,6 @@ $event_name = urldecode($_GET['event_name']);
                             <i class="fa-solid fa-chevron-right fa-sm"></i> Participants
                         </h1>
                         <div>
-                            <a class="btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-gears fa-sm text-white-50 mr-1"></i>Generate Cert</a>
                             <a class="btn btn-sm btn-info shadow-sm" href="deleted_participants.php?event_id=<?php echo $event_id; ?>&event_name=<?php echo $event_name; ?>"><i
                                 class="fas fa-trash fa-sm text-white-50 mr-1"></i>Archive</a>
                             <a href="events.php" class="btn btn-sm btn-secondary shadow-sm"><i
@@ -71,7 +69,7 @@ $event_name = urldecode($_GET['event_name']);
                                         <th scope="col">Full Name</th>                                        
                                         <th scope="col">Email</th>                                        
                                                                              
-                                        <th scope="col">Address</th>                                                                                      
+                                        <th scope="col">Province</th>                                                                                      
                                         <th scope="col">Date Registered</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -83,7 +81,7 @@ $event_name = urldecode($_GET['event_name']);
 
                                     require '../db/dbconn.php';
                                     $display_events = "
-                                                        SELECT pt.participant_id, pt.user_id, pt.date_registered, ut.first_name, ut.mid_name, ut.last_name, ut.ext_name, ut.email, ut.contact, ut.barangay, ut.municipality, ut.province
+                                                        SELECT pt.participant_id, pt.user_id, pt.date_registered, ut.first_name, ut.mid_name, ut.last_name, ut.ext_name, ut.email, ut.contact, ut.province
                                                         FROM participants pt
                                                         INNER JOIN events et ON et.event_id = pt.event_id
                                                         INNER JOIN users ut ON ut.user_id = pt.user_id
@@ -98,7 +96,7 @@ $event_name = urldecode($_GET['event_name']);
                                         $full_name = $row['first_name'].' '.$row['mid_name'].' '.$row['last_name'].' '.$row['ext_name'];
                                         $email = $row['email']; 
                                         $contact = $row['contact'];
-                                        $address = $row['barangay'].', '.$row['municipality'].', '.$row['province'];
+                                        $address = $row['province'];
                                         $date_registered = $row['date_registered'];
                                         // $status = $row['status'];
                                     ?>
