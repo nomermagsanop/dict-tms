@@ -27,8 +27,7 @@ require './function/encrypt_decrypt.php';
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Events</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <a href="deleted_events.php" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-trash fa-sm text-white-50"></i> Archive</a>
                     </div>
 
         <!-- Content Row -->
@@ -44,22 +43,21 @@ require './function/encrypt_decrypt.php';
                         <h6 class="m-0 font-weight-bold text-primary">List of Events</h6>
                          <div>
                             <a class="btn btn-sm btn-success shadow-sm" data-toggle="modal" data-target="#addnew"><i class="fas fa-plus fa-sm text-white-50"></i> Add event</a>
-                            <a href="deleted_events.php" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-trash fa-sm text-white-50"></i> Archived Events</a>
                         </div>
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered nowrap table-striped" id="myTable" width="100%" cellspacing="0">
+                            <table class="table nowrap table-striped" id="myTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                       
                                         <th scope="col">Event Name</th>                                        
                                         <th scope="col">Event Date</th>                                        
                                         <th scope="col">Host Office</th>                                        
-                                        <th scope="col">Speaker Name</th>                             
-                                        <th scope="col">Participants</th>                             
-                                        <th scope="col">Status</th>                             
+                                        <th scope="col">Speaker Name</th>                            
+                                        <th scope="col">Participants</th>                           
+                                                                    
                                         <th scope="col">Action</th>                             
                                        
                                     </tr>
@@ -112,19 +110,19 @@ require './function/encrypt_decrypt.php';
                                                               </a>";
                                         }
                                         if ($status == "closed") {
-                                            $status_badge = "<div class='row'><div class='col text-center'><i class='fa-solid fa-circle-xmark fa-xl'></i></div></div>";
+                                            $status_badge = "<sup class='badge badge-secondary badge-pill'>".$status."</sup>";
                                         } elseif ($status == "started") {
-                                            $status_badge = "<div class='row'><div class='col text-center'><i class='fa-solid fa-circle-check text-success fa-xl'></i></div></div>";
+                                            $status_badge = "<sup class='badge badge-success badge-pill'>".$status."</sup>";
                                         }
                                     ?>
                                     <tr>                                          
-                                        <td class=""><?php echo $event_name; ?></td>
+                                        <td class=""><?php echo $event_name; ?><span class="ml-1"><?php echo $status_badge; ?></span></td>
                                         <td class=""><?php echo date('F d, Y', strtotime($start_date)); ?></td>
                                         <td><?php echo $host_office; ?></td>
                                         <td><?php echo $event_speaker; ?></td>
                                         <td class="text-center"><?php echo $participants_count; ?> participants <a href="participants.php?event_id=<?php echo urlencode($event_id); ?>&event_name=<?php echo urlencode($event_name); ?>" data-toggle="tooltip" data-placement="right" title="View <?php echo $event_name; ?> Participants">(view)</a></td>
-                                        <td><?php echo $status_badge; ?></td>
                                         <td class="text-center">
+                                            <a class="btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#view_<?php echo $event_id; ?>" data-toggle="tooltip" data-placement="right" title="View <?php echo $event_name; ?>"><i class="fa-solid fa-eye"></i></a>
                                             <a class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#edit_<?php echo $event_id; ?>" data-toggle="tooltip" data-placement="right" title="Edit <?php echo $event_name; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                                             <?php echo $status_button; ?>
                                             <a href="#" class="btn btn-sm btn-danger delete-event-btn shadow-sm"
