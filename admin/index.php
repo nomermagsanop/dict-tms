@@ -4,6 +4,7 @@
 <?php include './include/head.php'; ?>
 <?php include 'dashboard_counts.php'; ?>
 <body id="page-top">
+    <div class="d-none" id="index"></div>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -353,13 +354,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
-                </div>
-            </footer>
+            <?php include './include/footer.php'; ?>
             <!-- End of Footer -->
 
         </div>

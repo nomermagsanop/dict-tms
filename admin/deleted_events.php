@@ -7,6 +7,7 @@ require './function/encrypt_decrypt.php';
 <?php include './include/head.php'; ?>
 
 <body id="page-top">
+    <div class="d-none" id="events"></div>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -27,8 +28,9 @@ require './function/encrypt_decrypt.php';
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Archived Events</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <a href="events.php" class="btn btn-sm btn-secondary shadow-sm"><i
+                                class="fas fa-circle-chevron-left text-white-50"></i> Back</a>
+                        
                     </div>
 
         <!-- Content Row -->
@@ -43,8 +45,7 @@ require './function/encrypt_decrypt.php';
                         class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">List of Archived Events</h6>
                      
-                        <a href="events.php" class="btn btn-sm btn-secondary shadow-sm"><i
-                                class="fas fa-circle-chevron-left text-white-50"></i> Back</a>
+                        
                    
                     </div>
                     <!-- Card Body -->
@@ -155,13 +156,7 @@ require './function/encrypt_decrypt.php';
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
-                    </div>
-                </div>
-            </footer>
+            <?php include './include/footer.php'; ?>
             <!-- End of Footer -->
 
         </div>

@@ -8,6 +8,7 @@ $event_name = urldecode($_GET['event_name']);
 <?php include './include/head.php'; ?>
 
 <body id="page-top">
+    <div class="d-none" id="events"></div>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -35,6 +36,8 @@ $event_name = urldecode($_GET['event_name']);
                             ?> 
                             <i class="fa-solid fa-chevron-right fa-sm"></i> Archived Participants
                         </h1>
+                        <a href="participants.php?event_id=<?php echo $event_id; ?>&event_name=<?php echo $event_name; ?>" class="btn btn-sm btn-secondary shadow-sm"><i
+                                class="fas fa-circle-chevron-left text-white-50"></i> Back</a>
                         
                     </div>
 
@@ -51,8 +54,7 @@ $event_name = urldecode($_GET['event_name']);
                         class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">List of Archived Participants</h6>
                         <div>
-                            <a href="participants.php?event_id=<?php echo $event_id; ?>&event_name=<?php echo $event_name; ?>" class="btn btn-sm btn-secondary shadow-sm"><i
-                                class="fas fa-circle-chevron-left text-white-50"></i> Back</a>
+                            
                         </div>
                    
                     </div>
@@ -78,7 +80,7 @@ $event_name = urldecode($_GET['event_name']);
 
                                     require '../db/dbconn.php';
                                     $display_events = "
-                                                        SELECT pt.participant_id, pt.user_id, pt.date_registered, ut.first_name, ut.mid_name, ut.last_name, ut.mid_name, ut.ext_name, ut.email, ut.contact, ut.barangay, ut.municipality, ut.province
+                                                        SELECT pt.participant_id, pt.user_id, pt.date_registered, ut.first_name, ut.mid_name, ut.last_name, ut.mid_name, ut.ext_name, ut.email, ut.contact, ut.province
                                                         FROM participants pt
                                                         INNER JOIN events et ON et.event_id = pt.event_id
                                                         INNER JOIN users ut ON ut.user_id = pt.user_id
@@ -93,7 +95,7 @@ $event_name = urldecode($_GET['event_name']);
                                         $full_name = $row['first_name'].' '.$row['mid_name'].' '.$row['last_name'].' '.$row['ext_name'];
                                         $email = $row['email']; 
                                         $contact = $row['contact'];
-                                        $address = $row['barangay'].', '.$row['municipality'].', '.$row['province'];
+                                        $address = $row['province'];
                                         $date_registered = $row['date_registered'];
                                         // $status = $row['status'];
                                     ?>
@@ -133,13 +135,7 @@ $event_name = urldecode($_GET['event_name']);
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
-                    </div>
-                </div>
-            </footer>
+            <?php include './include/footer.php'; ?>
             <!-- End of Footer -->
 
         </div>
