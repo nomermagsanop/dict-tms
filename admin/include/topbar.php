@@ -24,8 +24,15 @@
                                         }
                                     ?>
                                 </span>
+                                <?php
+                                    if (isset($_SESSION['profile_pic']) && $_SESSION['profile_pic']!="") {
+                                        $profile_pic = $_SESSION['profile_pic'];
+                                    }else{
+                                        $profile_pic = "profile.jpg";
+                                    }
+                                ?>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="./upload/users/<?php echo $profile_pic; ?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
