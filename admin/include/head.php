@@ -34,6 +34,11 @@ checkSession();
         .input-error {
             border: 1px solid red !important;
         }
+        body, #content-wrapper{
+            background: url(../img/11.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
     </style>
 
 </head>
