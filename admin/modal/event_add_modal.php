@@ -3,7 +3,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            	<div class="row float-left ml-2"><h4 class="modal-title float-left" id="myModalLabel">Add New Event</h4></div>
+            	<div class="row float-left ml-2">
+                    <h4 class="modal-title float-left text-success" id="myModalLabel">
+                        <i class="fas fa-plus fa-sm"></i> Add New Event
+                    </h4>
+                </div>
                 <div class="row float-right mr-2"><button type="button" class="close float-right" data-dismiss="modal" aria-hidden="true">&times;</button></div>
             </div>
             <div class="modal-body">
@@ -14,7 +18,8 @@
 						<label class="control-label modal-label">Event Name</label>
 					</div>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" name="event_name" value="" placeholder="Input event name.." required>
+						<!-- <input type="text" class="form-control" name="event_name" value="" required> -->
+                        <textarea class="form-control" name="event_name" rows="3" required></textarea>
 					</div>
 				</div>
                 <div class="row form-group">
@@ -22,7 +27,7 @@
                         <label class="control-label modal-label">Event Description</label>
                     </div>
                     <div class="col-sm-8">
-                        <textarea class="form-control" name="event_description" rows="4" placeholder="Input event description.." required></textarea>
+                        <textarea class="form-control" name="event_description" rows="4" required></textarea>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -30,8 +35,8 @@
                         <label class="control-label modal-label">Host Office</label>
                     </div>
                     <div class="col-sm-8">
-                        <select class="form-control" name="host_id" required>
-                            <option value="" selected disabled>-- Select Host Office --</option>
+                        <select class="form-control form-select" name="host_id" required>
+                            <option value="" selected disabled>Select Host Office</option>
                             <?php
 
                                     $sqlFetchHost = "SELECT * FROM host_office";
@@ -59,8 +64,8 @@
                         <label class="control-label modal-label">Speaker</label>
                     </div>
                     <div class="col-sm-8">
-                        <select class="form-control" name="speaker_id" required>
-                            <option value="" selected disabled>-- Select Speaker --</option>
+                        <select class="form-control form-select" name="speaker_id" required>
+                            <option value="" selected disabled>Select Speaker</option>
                             <?php
 
                                     $sqlFetchSpeaker = "SELECT speaker_id, CONCAT(first_name, ' ', last_name) as speaker_name FROM speakers";
@@ -85,7 +90,24 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-4">
-                        <label class="control-label modal-label">Event Start Date</label>
+                        <label class="control-label modal-label">Location</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <select class="form-control form-select" name="location" required>
+                            <option value="" selected disabled>Select Province</option>
+                            <option value="AURORA">Aurora</option>
+                            <option value="BATAAN">Bataan</option>
+                            <option value="BULACAN">Bulacan</option>
+                            <option value="NUEVA ECIJA">Nueva Ecija</option>
+                            <option value="PAMPANGA">Pampanga</option>
+                            <option value="TARLAC">Tarlac</option>
+                            <option value="ZAMBALES">Zambales</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label class="control-label modal-label">Start Date</label>
                     </div>
                     <div class="col-sm-8">
                         <input type="date" class="form-control" name="event_start" required>
@@ -93,7 +115,7 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-4">
-                        <label class="control-label modal-label">Event End Date</label>
+                        <label class="control-label modal-label">End Date</label>
                     </div>
                     <div class="col-sm-8">
                         <input type="date" class="form-control" name="event_end" required>
@@ -102,7 +124,7 @@
             </div> 
 			</div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
                 <button type="submit" name="edit" class="btn btn-success" id="addEvent"></i>Save</a>
 			</form>
             </div>

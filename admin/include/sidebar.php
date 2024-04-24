@@ -1,8 +1,8 @@
         <!-- Sidebar -->
-        <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #001f54;">
+        <ul class="navbar-nav sidebar sidebar-dark accordion text-white" id="accordionSidebar" style="background-color: rgba(0, 31, 84, 0.8);">
 
             <li class="text-center">   <!-- Sidebar - Brand -->
-                <a class="sidebar-brand align-items-center justify-content-center" href="dashboard.php">
+                <a class="sidebar-brand align-items-center justify-content-center" href="index.php">
                     <div class="sidebar-brand-icon">
                         <img src="../img/sidebar_logo.png" alt="" style="width: 100px; height: auto;">
                     </div>

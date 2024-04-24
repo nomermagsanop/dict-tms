@@ -10,18 +10,18 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
       <link href="css/style.css" rel="stylesheet">
-      <!-- FONT -->
 
+      <!-- FONT -->
       <link href="https://fonts.gstatic.com" rel="preconnect">
-      <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+      <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
       <!-- SweetAlert2 CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
 
-<!-- Your existing HTML code here -->
-
-<!-- SweetAlert2 JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+      <!-- SweetAlert2 JavaScript -->
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
    </head>
    <body class="">
@@ -29,7 +29,7 @@
       <div class="container d-flex align-items-center min-vh-100">
          <div class="row g-0 justify-content-center">
             <!-- TITLE -->
-            <div class="col-lg-4 offset-lg-1 mx-0 px-0">
+            <div class="col-lg-5 offset-lg-1 mx-0 px-0">
                <div id="title-container">
                   <img class="covid-image" src="./img/sidebar_logo.png">
                   <h2>TMS</h2>
@@ -60,11 +60,19 @@
                               <input class="form-control" name="last_name" type="text" required>
                            </div>
                            <div class="mt-2">
-                              <label class="form-label">Extension Name:</label> 
-                              <input class="form-control" name="ext_name" type="text">
+                              <label class="form-label">Suffix:</label> 
+                              <select name="ext_name" class="form-select" required>
+                                       <option value="n/a" selected>N/A</option>
+                                       <option value="JR">JR</option>
+                                       <option value="SR">SR</option>
+                                       <option value="II">II</option>
+                                       <option value="III">III</option>
+                                       <option value="IV">IV</option>
+                                       <option value="V">V</option>
+                              </select>
                            </div>
                            <div class="row mt-2">
-                              <div class="col-lg-5 col-md-5 col-5">
+                              <div class="col-lg-5 col-md-5 col-12">
                                  <label class="form-label">Age:</label><span class="text-danger">*</span>
                                  <div class="input-container">
                                     <!-- <input class="form-control" id="age" name="age" type="text"> -->
@@ -81,7 +89,7 @@
                                     </select>
                                  </div>
                               </div>
-                              <div class="col-lg-7">
+                              <div class="col-lg-7 col-md-7 col-12">
                                  <label class="form-label">Sex:</label><span class="text-danger">*</span>
                                  <div id="">
                                     <select name="sex" class="form-select" required>
@@ -103,7 +111,7 @@
                            </div>
                            <div class="mt-2">
                               <label class="form-label">Phone Number</label><span class="text-danger">*</span> 
-                              <input class="form-control" name="contact" type="number" limit="11" required>
+                              <input class="form-control" id="contact" name="contact" type="number" limit="11" required>
                            </div>
                            <div class="mt-2">
                               <label class="form-label">Province:</label><span class="text-danger">*</span> 
@@ -210,5 +218,36 @@
       </div>
 
       <script src="js/script.js"></script>
+      <script>
+         // Input Element for Contact Number
+         function limitContactInputLength(event) {
+             // Remove non-digit characters
+             var inputValue = event.target.value.replace(/\D/g, '');
+
+             // Limit the length to 11 digits
+             if (inputValue.length > 11) {
+                 inputValue = inputValue.slice(0, 11);
+             }
+
+             // Update the input value
+             event.target.value = inputValue;
+         }
+
+         // Contact Input Validation
+         var contactInput = document.getElementById('contact');
+         contactInput.addEventListener('input', limitContactInputLength);
+
+         // Get the form element
+         const formElement = document.getElementById('form-wrapper');
+
+         // Add event listener for keydown event
+         formElement.addEventListener('keydown', function(event) {
+             // Check if the pressed key is Enter (key code 13)
+             if (event.keyCode === 13) {
+                 // Prevent default form submission behavior
+                 event.preventDefault();
+             }
+         });
+      </script>
    </body>
 </html>

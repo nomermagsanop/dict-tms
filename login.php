@@ -15,10 +15,12 @@ redirectToDashboard();
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
       <link href="css/style.css" rel="stylesheet">
+      
       <!-- FONT -->
-
       <link href="https://fonts.gstatic.com" rel="preconnect">
-      <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+      <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
       <!-- SweetAlert2 CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
@@ -35,7 +37,7 @@ redirectToDashboard();
       <div class="container d-flex align-items-center min-vh-100">
          <div class="row g-0 justify-content-center">
             <!-- TITLE -->
-            <div class="col-lg-4 offset-lg-1 mx-0 px-0">
+            <div class="col-lg-5 offset-lg-1 mx-0 px-0">
                <div id="title-container">
                   <img class="covid-image" src="./img/sidebar_logo.png">
                   <h2>TMS</h2>

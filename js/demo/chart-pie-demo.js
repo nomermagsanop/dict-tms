@@ -5,7 +5,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 // Pie Chart Example
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
-  type: 'doughnut',
+  type: 'polarArea',
   data: {
     labels: ["Direct", "Referral", "Social"],
     datasets: [{
