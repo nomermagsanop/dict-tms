@@ -6,13 +6,12 @@ require '../../db/dbconn.php';
 if (isset($_POST['event_id']) && is_numeric($_POST['event_id'])) {
     // Sanitize the input to prevent SQL injection
     $event_id = mysqli_real_escape_string($con, $_POST['event_id']);
-    $event_name = strtoupper(mysqli_real_escape_string($con, $_POST['event_name']));
-    $event_description = strtoupper(mysqli_real_escape_string($con, $_POST['event_description']));
+    $event_name = mysqli_real_escape_string($con, $_POST['event_name']);
+    $event_description = mysqli_real_escape_string($con, $_POST['event_description']);
     $speaker_id = mysqli_real_escape_string($con, $_POST['speaker_id']);
     $event_start = mysqli_real_escape_string($con, $_POST['event_start']);
     $event_end = mysqli_real_escape_string($con, $_POST['event_end']);
     $host_id = mysqli_real_escape_string($con, $_POST['host_id']);
-    $location = strtoupper(mysqli_real_escape_string($con, $_POST['location']));
 
     // SQL query to update the event
     $sql = "UPDATE events SET 
@@ -21,8 +20,7 @@ if (isset($_POST['event_id']) && is_numeric($_POST['event_id'])) {
             speaker_id='$speaker_id', 
             event_start='$event_start', 
             event_end='$event_end', 
-            host_id='$host_id',
-            location='$location'
+            host_id='$host_id'  
             WHERE event_id='$event_id'";
 
     // Execute the query

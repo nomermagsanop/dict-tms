@@ -1,6 +1,12 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
+  <?php 
+require './function/check_session.php';
+require '../db/dbconn.php';
+// Call the checkSession function to perform session validation
+checkSession();
+?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DICT Training Management System</title>
@@ -15,6 +21,18 @@
 
     <!-- CSS STYLING -->
     <link href="./assets/style.css" rel="stylesheet">
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css" integrity="sha256-h2Gkn+H33lnKlQTNntQyLXMWq7/9XI2rlPCsLsVcUBs=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js" integrity="sha256-+0Qf8IHMJWuYlZ2lQDBrF1+2aigIRZXEdSvegtELo2I=" crossorigin="anonymous"></script>
+
+
+
+
 </head>
 <body>
 
@@ -37,12 +55,32 @@
           <a class="nav-link" href="profile.php">My Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Logout</a>
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
         </li>
+
       </ul>
     </div>
   </div>
 </nav>
+<!-- Logout Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logoutModalLabel">Logout Confirmation</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to logout?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-danger" href="#" id="logoutBtn">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <section class="home" id="home">
  <div class="container-fluid">
@@ -60,6 +98,9 @@
  </div>
 </section>
     <!-- ======= Schedule Section ======= -->
+ 
+
+
     <section id="schedule" class="section-with-bg">
       <div class="container" data-aos="fade-up">
         <div class="section-header">
@@ -70,30 +111,40 @@
           necessitatibus voluptatem quis labore perspiciatis quia.</h3>
         <div class="tab-content row justify-content-center" data-aos="fade-up" data-aos-delay="200">
           <!-- Schdule -->
+           <?php
+            $display_query = "SELECT e.event_id, e.event_name, e.event_description, e.event_start, e.event_end, e.status, h.office, s.first_name, s.mid_name, s.last_name, s.ext_name, s.organization, s.profile 
+          FROM events AS e 
+          INNER JOIN host_office AS h ON e.host_id = h.host_id 
+          INNER JOIN speakers AS s ON e.speaker_id = s.speaker_id";
+
+          $sqlQuery = mysqli_query($con, $display_query) or die(mysqli_error($con));
+
+          while ($row = mysqli_fetch_array($sqlQuery)) {
+              $event_id = $row['event_id'];
+              $event_name = $row['event_name']; // Replaced 'event_name' with 'prog_name'
+              $event_description = $row['event_description'];
+              $event_start = date('F j, Y', strtotime($row['event_start']));
+              $event_end = date('F j, Y', strtotime($row['event_end']));
+              $status = $row['status'];
+              $office = $row['office'];
+              $speaker_name = $row['first_name'] . ' ' . $row['mid_name'] . ' ' . $row['last_name'] . ' ' . $row['ext_name'];
+              $organization = $row['organization'];
+              $profile = $row['profile'];
+            ?>
           <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="day-1">         
             <div class="row schedule-item">
-              <div class="col-md-2"><time>April 16, 2024</time></div>
+              <div class="col-md-2"><time><?php echo $event_start; ?></time></div>
               <div class="col-md-10">
                 <div class="speaker">
-                  <img src="../img/speakers/1.jpg" alt="Brenden Legros">
+                  <img src="../admin/upload/profile/<?php echo $profile; ?>" alt="Brenden Legros">
                 </div>
-                <h4>Title: <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore, illum?</span></h4>
-                <p> <span>Resource Speaker:</span>Brenden Legros</p>
+                <h4>Title: <span><?php echo $event_name; ?></span></h4>
+                <p> <span>Resource Speaker:</span><?php echo $speaker_name; ?></p>
                <button class="btn btn-warning">Register Now!</button>
-              </div>
-            </div>
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>April 16, 2024</time></div>
-              <div class="col-md-10">
-                <div class="speaker">
-                  <img src="../img/speakers/1.jpg" alt="Brenden Legros">
-                </div>
-                <h4>Title: <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore, illum?</span></h4>
-                <p> <span>Resource Speaker:</span>Brenden Legros</p>
-                <button class="btn btn-warning">Register Now!</button>
               </div>
             </div>            
           </div>
+          <?php } ?>
           <!-- End Schdule-->
         </div>
       </div>
@@ -127,33 +178,36 @@
           <p>Here are some of our speakers</p>
         </div>
         <div class="row">
+            <?php
+            $display_query = "SELECT e.event_id, e.event_name, e.event_description, e.event_start, e.event_end, e.status, h.office, s.first_name, s.mid_name, s.last_name, s.ext_name, s.organization, s.profile 
+          FROM events AS e 
+          INNER JOIN host_office AS h ON e.host_id = h.host_id 
+          INNER JOIN speakers AS s ON e.speaker_id = s.speaker_id";
+
+          $sqlQuery = mysqli_query($con, $display_query) or die(mysqli_error($con));
+
+          while ($row = mysqli_fetch_array($sqlQuery)) {
+              $event_id = $row['event_id'];
+              $event_name = $row['event_name']; // Replaced 'event_name' with 'prog_name'
+              $event_description = $row['event_description'];
+              $event_start = date('F j, Y', strtotime($row['event_start']));
+              $event_end = date('F j, Y', strtotime($row['event_end']));
+              $status = $row['status'];
+              $office = $row['office'];
+              $speaker_name = $row['first_name'] . ' ' . $row['mid_name'] . ' ' . $row['last_name'] . ' ' . $row['ext_name'];
+              $organization = $row['organization'];
+              $profile = $row['profile'];
+            ?>
           <div class="col-lg-4 col-md-6">
             <div class="speaker" data-aos="fade-up" data-aos-delay="100">
-              <img src="../img/speakers/1.jpg" alt="Speaker 1" class="img-fluid">
+              <img src="../admin/upload/profile/<?php echo $profile; ?>" alt="Speaker 1" class="img-fluid">
               <div class="details">
-                <h3><a href="speaker-details.html">Brenden Legros</a></h3>
-                <p>Region III DICT Zambales</p>
+                <h3><a href="speaker-details.html"><?php echo $speaker_name; ?></a></h3>
+                <p><?php echo $office; ?></p>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker" data-aos="fade-up" data-aos-delay="200">
-              <img src="../img/speakers/2.jpg" alt="Speaker 2" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Hubert Hirthe</a></h3>
-               <p>Region III DICT Zambales</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker" data-aos="fade-up" data-aos-delay="300">
-              <img src="../img/speakers/3.jpg" alt="Speaker 3" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Cole Emmerich</a></h3>
-                <p>Region III DICT Zambales</p>
-              </div>
-            </div>
-          </div>
+          <?php } ?>
         </div>
       </div>
     </section><!-- End Speakers Section -->
@@ -176,6 +230,7 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+   
 <script>// JavaScript for navbar scroll effect
 window.addEventListener('scroll', function() {
 var navbar = document.querySelector('.navbar');
@@ -183,5 +238,40 @@ navbar.classList.toggle('navbar-scroll', window.scrollY > 0);
 });
 
 </script>
+<script>
+        $(document).ready(function(){
+            $("#logoutBtn").click(function(e){
+                e.preventDefault(); // Prevent default action of the link
+
+                $.ajax({
+                    url: "../function/logout_action.php",
+                    type: "POST",
+                    success: function(response){
+                        // Show SweetAlert2 notification with confirm button
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Logout Successful',
+                            text: 'You have been logged out successfully!',
+                            showCancelButton: false,
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                // Redirect to login page after clicking "OK"
+                                window.location.href = "../login.php";
+                            }
+                        });
+                        // Redirect to login page after successful logout
+                        setTimeout(function(){
+                        window.location.href = "../login.php";
+                        }, 1500); // Redirect after 1.5 seconds
+                    },
+                    error: function(xhr, status, error){
+                        // Handle error if any
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

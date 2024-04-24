@@ -33,7 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['host_id'] = $row['host_id'];
             $_SESSION['role'] = $row['role'];
             $_SESSION['full_name'] = $row['first_name'] . ' ' . $row['last_name'];
-            $_SESSION['profile_pic'] = $row['upload_url'];
 
             // Return role value as part of the response
             echo json_encode(['success' => true, 'role' => $row['role']]);
