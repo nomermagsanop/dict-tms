@@ -49,14 +49,14 @@ require './function/encrypt_decrypt.php';
                     <!-- Card Body -->
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table nowrap table-striped" id="myTable" width="100%" cellspacing="0">
+                            <table class="table table-bordered nowrap" id="myTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                       
                                         <th scope="col">Event Name</th>                                        
                                         <th scope="col">Event Date</th>                                        
-                                        <th scope="col">Host Office</th>                                        
-                                        <th scope="col">Speaker Name</th>                            
+                                                                                
+                                        <th scope="col">Location</th>                            
                                         <th scope="col">Participants</th>                           
                                         <th scope="col">Status</th>              
                                         <th scope="col">Action</th>                             
@@ -84,6 +84,7 @@ require './function/encrypt_decrypt.php';
                                         $event_description = $row['event_description']; 
                                         $host_office = $row['office']; 
                                         $host_id = $row['host_id']; 
+                                        $location = $row['location']; 
                                         $speaker_id = $row['speaker_id'];                                 
                                         $event_speaker = $row['speaker_name'];                 
                                         $status = $row['status'];
@@ -118,21 +119,29 @@ require './function/encrypt_decrypt.php';
                                                               </a>";
                                         }
                                         if ($status == "closed") {
-                                            $status_badge = "<sup class='badge badge-secondary badge-pill'>".$status."</sup>";
+                                            $status_badge = "<p class='badge badge-secondary badge-pill'>".$status."</p>";
                                         } elseif ($status == "started") {
-                                            $status_badge = "<sup class='badge badge-success badge-pill'>".$status."</sup>";
+                                            $status_badge = "<p class='badge badge-success badge-pill'>".$status."</p>";
                                         } elseif ($status == "pending") {
-                                            $status_badge = "<sup class='badge badge-warning badge-pill'>".$status."</sup>";
+                                            $status_badge = "<p class='badge badge-warning badge-pill'>".$status."</p>";
                                         }
                                     ?>
                                     <tr>                                          
-                                        <td class=""><?php echo $event_name; ?></td>
+                                        <td class="">
+                                            <?php
+                                                // Limiting the character length of $event_name to, for example, 15 characters
+                                                $limited_event_name = strlen($event_name) > 20 ? substr($event_name, 0, 15) . '...' : $event_name;
+                                                echo $limited_event_name; 
+                                            ?>
+                                        </td>
                                         <td class=""><?php echo date('F d, Y', strtotime($start_date)); ?></td>
-                                        <td><?php echo $host_office; ?></td>
-                                        <td><?php echo $event_speaker; ?></td>
-                                        <td class="text-center"><?php echo $participants_count; ?> participants <a href="participants.php?event_id=<?php echo urlencode($event_id); ?>&event_name=<?php echo urlencode($event_name); ?>" data-toggle="tooltip" data-placement="right" title="View <?php echo $event_name; ?> Participants">(view)</a></td>
-                                        <td>
-                                            <span class="ml-1"><?php echo $status_badge; ?></span>
+                                        <td class=""><?php echo $location; ?></td>
+                                        <td class="">
+                                            <?php echo $participants_count; ?> participants
+                                            <a href="participants.php?event_id=<?php echo urlencode($event_id); ?>&event_name=<?php echo urlencode($event_name); ?>" data-toggle="tooltip" data-placement="right" title="View <?php echo $event_name; ?> Participants">(view)</a>
+                                        </td>
+                                        <td class="text-center">
+                                            <?php echo $status_badge; ?>
                                         </td>
                                         <td class="text-center">
                                             <a class="btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#view_<?php echo $event_id; ?>" data-toggle="tooltip" data-placement="right" title="View <?php echo $event_name; ?>"><i class="fa-solid fa-eye"></i></a>
@@ -399,6 +408,16 @@ require './function/encrypt_decrypt.php';
                 formData.find('select[name="host_id"]').addClass('input-error');
             } else {
                 formData.find('select[name="host_id"]').removeClass('input-error');
+            }
+
+            // Check if department_id is empty or has no selected value
+            const loc = formData.find('select[name="location"]').val();
+            if (!loc || loc === '') {
+                fieldsAreValid = false; // Set to false if department_id is empty
+                showWarningMessage('Please select a locaion.');
+                formData.find('select[name="location"]').addClass('input-error');
+            } else {
+                formData.find('select[name="location"]').removeClass('input-error');
             }
 
             requiredFields.each(function() {
