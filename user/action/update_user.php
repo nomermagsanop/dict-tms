@@ -35,7 +35,7 @@ if (isset($_POST['user_id']) && is_numeric($_POST['user_id'])) {
         $file_tmp1 = $file1['tmp_name'];
 
         // Move uploaded file to desired location
-        $file_destination1 = "../upload/users/" . $file_name1;
+        $file_destination1 = "../../admin/upload/users/" . $file_name1;
         move_uploaded_file($file_tmp1, $file_destination1);
     }
 
