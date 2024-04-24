@@ -11,17 +11,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Check if keys exist in $_POST array before accessing them
-    $first_name = isset($_POST['first_name']) ? strtoupper(sanitizeInput($_POST['first_name'])) : '';
-    $mid_name = isset($_POST['mid_name']) ? strtoupper(sanitizeInput($_POST['mid_name'])) : '';
-    $last_name = isset($_POST['last_name']) ? strtoupper(sanitizeInput($_POST['last_name'])) : '';
-    $ext_name = isset($_POST['ext_name']) ? strtoupper(sanitizeInput($_POST['ext_name'])) : '';
-    $age = isset($_POST['age']) ? strtoupper(sanitizeInput($_POST['age'])) : '';
-    $sex = isset($_POST['sex']) ? strtoupper(sanitizeInput($_POST['sex'])) : '';
+    $first_name = isset($_POST['first_name']) ? sanitizeInput($_POST['first_name']) : '';
+    $mid_name = isset($_POST['mid_name']) ? sanitizeInput($_POST['mid_name']) : '';
+    $last_name = isset($_POST['last_name']) ? sanitizeInput($_POST['last_name']) : '';
+    $ext_name = isset($_POST['ext_name']) ? sanitizeInput($_POST['ext_name']) : '';
+    $age = isset($_POST['age']) ? sanitizeInput($_POST['age']) : '';
+    $sex = isset($_POST['sex']) ? sanitizeInput($_POST['sex']) : '';
     $email = isset($_POST['email']) ? sanitizeInput($_POST['email']) : '';
     $contact = isset($_POST['contact']) ? sanitizeInput($_POST['contact']) : '';
     // $barangay = isset($_POST['barangay']) ? sanitizeInput($_POST['barangay']) : '';
     // $municipality = isset($_POST['municipality']) ? sanitizeInput($_POST['municipality']) : '';
-    $province = isset($_POST['province']) ? strtoupper(sanitizeInput($_POST['province'])) : '';
+    $province = isset($_POST['province']) ? sanitizeInput($_POST['province']) : '';
     $host_id = isset($_POST['host_id']) ? sanitizeInput($_POST['host_id']) : '';
     $username = isset($_POST['username']) ? sanitizeInput($_POST['username']) : '';
     $password = isset($_POST['password']) ? password_hash(sanitizeInput($_POST['password']), PASSWORD_DEFAULT) : '';

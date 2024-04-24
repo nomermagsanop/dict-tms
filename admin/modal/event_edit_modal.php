@@ -3,11 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            	<div class="row float-left ml-2">
-                    <h4 class="modal-title float-left text-primary" id="myModalLabel">
-                        <i class="fas fa-pen-to-square fa-sm"></i> Edit Event
-                    </h4>
-                </div>
+            	<div class="row float-left ml-2"><h4 class="modal-title float-left" id="myModalLabel">Edit Event</h4></div>
                 <div class="row float-right mr-2"><button type="button" class="close float-right" data-dismiss="modal" aria-hidden="true">&times;</button></div>
             </div>
             <div class="modal-body">
@@ -19,8 +15,7 @@
 						<label class="control-label modal-label">Event Name</label>
 					</div>
 					<div class="col-sm-8">
-						<!-- <input type="text" class="form-control" name="event_name" value="<?php echo $event_name; ?>"> -->
-                        <textarea class="form-control" name="event_name" rows="3"><?php echo $event_name; ?></textarea>
+						<input type="text" class="form-control" name="event_name" value="<?php echo $event_name; ?>">
 					</div>
 				</div>
                 <div class="row form-group">
@@ -91,24 +86,7 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-4">
-                        <label class="control-label modal-label">Location</label>
-                    </div>
-                    <div class="col-sm-8">
-                        <select class="form-control form-select" name="location" required>
-                            <option value="" disabled>Select Province</option>
-                            <option value="AURORA" <?php echo $location == 'AURORA' ? 'selected' : ''; ?>>Aurora</option>
-                            <option value="BATAAN" <?php echo $location == 'BATAAN' ? 'selected' : ''; ?>>Bataan</option>
-                            <option value="BULACAN" <?php echo $location == 'BULACAN' ? 'selected' : ''; ?>>Bulacan</option>
-                            <option value="NUEVA ECIJA" <?php echo $location == 'NUEVA ECIJA' ? 'selected' : ''; ?>>Nueva Ecija</option>
-                            <option value="PAMPANGA" <?php echo $location == 'PAMPANGA' ? 'selected' : ''; ?>>Pampanga</option>
-                            <option value="TARLAC" <?php echo $location == 'TARLAC' ? 'selected' : ''; ?>>Tarlac</option>
-                            <option value="ZAMBALES" <?php echo $location == 'ZAMBALES' ? 'selected' : ''; ?>>Zambales</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col-sm-4">
-                        <label class="control-label modal-label">Start Date</label>
+                        <label class="control-label modal-label">Event Start Date</label>
                     </div>
                     <div class="col-sm-8">
                         <input type="date" class="form-control" name="event_start" value="<?php echo $start_date; ?>">
@@ -116,7 +94,7 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-4">
-                        <label class="control-label modal-label">End Date</label>
+                        <label class="control-label modal-label">Event End Date</label>
                     </div>
                     <div class="col-sm-8">
                         <input type="date" class="form-control" name="event_end" value="<?php echo $end_date; ?>">
@@ -125,7 +103,7 @@
             </div> 
 			</div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 <button type="submit" name="edit" class="btn btn-primary" id="updateEvent_<?php echo $event_id; ?>"></i>Update</a>
 			</form>
             </div>
@@ -135,16 +113,12 @@
 </div>
 
 
-<!-- View -->
+<!-- Edit -->
 <div class="modal fade" id="view_<?php echo $event_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="row float-left ml-2">
-                    <h4 class="modal-title float-left text-info" id="myModalLabel">
-                        <i class="fas fa-eye fa-sm"></i> View Event
-                    </h4>
-                </div>
+                <div class="row float-left ml-2"><h4 class="modal-title float-left" id="myModalLabel">View Event</h4></div>
                 <div class="row float-right mr-2"><button type="button" class="close float-right" data-dismiss="modal" aria-hidden="true">&times;</button></div>
             </div>
             <div class="modal-body">
@@ -227,24 +201,7 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-4">
-                        <label class="control-label modal-label">Location</label>
-                    </div>
-                    <div class="col-sm-8">
-                        <select class="form-control custom-select" name="location" readonly disabled>
-                            <option value="" disabled>Select Province</option>
-                            <option value="AURORA" <?php echo $location == 'AURORA' ? 'selected' : ''; ?>>Aurora</option>
-                            <option value="BATAAN" <?php echo $location == 'BATAAN' ? 'selected' : ''; ?>>Bataan</option>
-                            <option value="BULACAN" <?php echo $location == 'BULACAN' ? 'selected' : ''; ?>>Bulacan</option>
-                            <option value="NUEVA ECIJA" <?php echo $location == 'NUEVA ECIJA' ? 'selected' : ''; ?>>Nueva Ecija</option>
-                            <option value="PAMPANGA" <?php echo $location == 'PAMPANGA' ? 'selected' : ''; ?>>Pampanga</option>
-                            <option value="TARLAC" <?php echo $location == 'TARLAC' ? 'selected' : ''; ?>>Tarlac</option>
-                            <option value="ZAMBALES" <?php echo $location == 'ZAMBALES' ? 'selected' : ''; ?>>Zambales</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col-sm-4">
-                        <label class="control-label modal-label">Start Date</label>
+                        <label class="control-label modal-label">Event Start Date</label>
                     </div>
                     <div class="col-sm-8">
                         <input type="date" class="form-control" name="event_start" value="<?php echo $start_date; ?>" readonly disabled>
@@ -252,7 +209,7 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-4">
-                        <label class="control-label modal-label">End Date</label>
+                        <label class="control-label modal-label">Event End Date</label>
                     </div>
                     <div class="col-sm-8">
                         <input type="date" class="form-control" name="event_end" value="<?php echo $end_date; ?>" readonly disabled>
@@ -261,7 +218,7 @@
             </div> 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </form>
             </div>
 

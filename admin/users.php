@@ -23,9 +23,8 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Manage Admins</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <h1 class="h3 mb-0 text-gray-800">Users</h1>
+                        <a href="deleted_users.php" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-trash fa-sm"></i> Archive</a>
                     </div>
 
         <!-- Content Row -->
@@ -38,9 +37,9 @@
                     <!-- Card Header - Dropdown -->
                     <div
                         class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">List of admins</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">List of Users</h6>
                      
-                        <a class="btn btn-sm btn-success shadow-sm" data-toggle="modal" data-target="#addnewAdmin"><i class="fas fa-plus fa-sm text-white-50"></i> Add admin</a>
+                        <a class="btn btn-sm btn-success shadow-sm" data-toggle="modal" data-target="#addnew1"><i class="fas fa-plus fa-sm text-white-50"></i> Add user</a>
                    
                     </div>
                     <!-- Card Body -->
@@ -50,12 +49,11 @@
                                 <thead class="">
                                     <tr>
                                       
-                                                                           
-                                        <th scope="col">Image</th> 
-                                        <th scope="col">Name</th> 
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Office</th>                                                       
-                                        <th scope="col">Role</th>                                                       
+                                        <th scope="col">#</th>                                        
+                                        <th scope="col">Profile Picture</th>                                        
+                                        <th scope="col">Name</th>                                               
+                                        <th scope="col">Province</th>                                               
+                                        <th scope="col">Email</th>                                               
                                         <th scope="col">Action</th>                             
                                        
                                     </tr>
@@ -66,13 +64,13 @@
                                   <?php
 
                             require '../db/dbconn.php';
-                            $display_admin = "SELECT * FROM `users` WHERE role IN (1, 2) AND deleted = 0;
-";
-                            $sqlQuery = mysqli_query($con, $display_admin) or die(mysqli_error($con));
+                            $display_users = "SELECT * FROM `users` WHERE deleted = 0";
+                            $sqlQuery = mysqli_query($con, $display_users) or die(mysqli_error($con));
 
-                           
+                            $counter = 1;
+
                             while($row = mysqli_fetch_array($sqlQuery)){
-                               $user_id = $row['user_id'];
+                                $user_id = $row['user_id'];
                                 $first_name = $row['first_name'];
                                 $mid_name = $row['mid_name'];
                                 $last_name = $row['last_name'];
@@ -85,41 +83,21 @@
                                 $host_id = $row['host_id'];
                                 $username = $row['username'];
                                 $password = $row['password'];
-                                $role = $row['role'];
                                 $profile = $row['profile'];
                                
                                 $user_name = $row['first_name'] . ' ' . $row['mid_name'] . ' ' . $row['last_name'] . ' ' . $row['ext_name'];
-                                // Get the office value based on host_id
-                                $get_office_query = "SELECT office FROM host_office WHERE host_id = $host_id";
-                                $office_result = mysqli_query($con, $get_office_query);
-                                $office_row = mysqli_fetch_array($office_result);
-                                $office = $office_row['office'];
                             ?>
                             <tr>         
-                               
-                                 <td class="d-flex">
+                                <td class=""><?php echo $counter; ?></td>
+                                <td class="d-flex">
                                     <img class="mx-auto rounded" src="./upload/users/<?php echo $profile; ?>" alt="Profile Picture" style="width: 60px; height: 60px; object-fit: cover;">
                                 </td>
                                 <td class=""><?php echo $user_name; ?></td>
-                                <td class=""><?php echo $email; ?></td>   
-                                <td class=""><?php echo $office; ?></td>   
-                               <td class="">
-                                                <?php
-                                                if ($role == 1) {
-                                                    echo "ADMINISTRATOR";
-                                                } elseif ($role == 2) {
-                                                    echo "OFFICE STAFF";
-                                                } else {
-                                                    // Handle other role values if needed
-                                                    echo "Unknown Role";
-                                                }
-                                                ?>
-                                            </td>
-
-
+                                <td class=""><?php echo $province; ?></td>
+                                <td class=""><?php echo $contact; ?></td>
+                               
                                 <td class="text-center">
-                                     <a class="btn btn-sm btn-info shadow-sm"><i class="fa-solid fa-eye"></i></a>
-                                    <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editAdmin_<?php echo $user_id; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#edit1_<?php echo $user_id; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                                  
                                     <a href="#" class="btn btn-sm btn-danger delete-User-btn" 
                                        data-User-id="<?php echo $user_id; ?>" 
@@ -127,14 +105,11 @@
                                        <i class="fa-solid fa-trash"></i>
                                     
                                     </a>
-                                    
-                                    </a>
                                 </td>
                             </tr>
-
                             <?php
-                               
-                                include('modal/admin_edit_modal.php');
+                                $counter++;
+                                include('modal/user_edit_modal.php');
                             } 
                             ?>
                             </tbody>
@@ -144,7 +119,7 @@
                     </div>
                 </div>
             </div>
-            <?php include('modal/admin_add_modal.php'); ?>     
+            <?php include('modal/user_add_modal.php'); ?>     
         </div>
 
                 </div>
@@ -260,7 +235,7 @@ $(document).ready(function() {
         });
     };
 
- $('#profileUpload2').on('change', function() {
+ $('#profileUpload1').on('change', function() {
             const fileInput = $(this)[0];
             const file = fileInput.files[0];
 
@@ -276,9 +251,9 @@ $(document).ready(function() {
                 // Read the selected file and display the preview
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    $('#profilePreview2').attr('src', e.target.result); // Set image source to preview element
+                    $('#profilePreview1').attr('src', e.target.result); // Set image source to preview element
                     $('input[name="profile"]').removeClass('input-error');
-                    $('.custom-file-label[for="profileUpload2"]').removeClass('input-error'); // Add input-error class to the label as well
+                    $('.custom-file-label[for="profileUpload1"]').removeClass('input-error'); // Add input-error class to the label as well
                 };
                 reader.readAsDataURL(file);
             } else {
@@ -292,12 +267,12 @@ $(document).ready(function() {
         });
 
     // Function to handle form submission
-    $('#addAdmin').on('click', function(e) {
+    $('#addUser').on('click', function(e) {
         e.preventDefault(); // Prevent default form submission
 
-        var formData = new FormData($('#addnewAdmin form')[0]); // Create FormData object with form data
+        var formData = new FormData($('#addnew1 form')[0]); // Create FormData object with form data
 
-        const requiredFields = $('input[required], select[required]', $('#addnewAdmin   ')); // Select required fields
+        const requiredFields = $('input[required], select[required]', $('#addnew1   ')); // Select required fields
 
         let fieldsAreValid = true; // Initialize as true
 
@@ -324,7 +299,7 @@ $(document).ready(function() {
 
             // Perform AJAX form submission
             $.ajax({
-                url: 'action/add_admin.php',
+                url: 'action/add_user.php',
                 type: 'POST',
                 data: formData,
                 contentType: false,
@@ -372,13 +347,13 @@ $(document).ready(function() {
     };
 
     // Function to handle file input change event for profile picture
-    $('[id^="profileUpload2_"]').on('change', function() {
+    $('[id^="profileUpload1_"]').on('change', function() {
         var userId = $(this).attr('id').split('_')[1]; // Extract event ID
         const fileInput = $(this)[0];
         const file = fileInput.files[0];
 
         // Update the label text with the selected file name
-        $(this).next('#profileLabel2_' + userId).text(file.name);
+        $(this).next('#profileLabel1_' + userId).text(file.name);
 
         // Check if the file type is allowed
         const allowedTypes = ['image/png', 'image/jpeg', 'image/webp'];
@@ -386,7 +361,7 @@ $(document).ready(function() {
             // Read the selected file and display the preview
             const reader = new FileReader();
             reader.onload = function(e) {
-                $('#profilePreview2_' + userId).attr('src', e.target.result); // Set image source to preview element
+                $('#profilePreview1_' + userId).attr('src', e.target.result); // Set image source to preview element
             };
             reader.readAsDataURL(file);
             profileValid = true; // Reset profileValid if file type is valid
@@ -398,14 +373,14 @@ $(document).ready(function() {
 
         // Toggle input-error class based on profileValid
         $(this).toggleClass('input-error', !profileValid);
-        $(this).next('#profileLabel2_' + userId).toggleClass('input-error', !profileValid);
+        $(this).next('#profileLabel1_' + userId).toggleClass('input-error', !profileValid);
     });
 
     // For dynamically rendered modals
-    $(document).on('click', '[id^="updateAdmin_"]', function(e) {
+    $(document).on('click', '[id^="updateUser_"]', function(e) {
         e.preventDefault(); // Prevent default form submission
         var userId = $(this).attr('id').split('_')[1]; // Extract event ID
-        var formData = new FormData($('#editAdmin_' + userId + ' form')[0]);
+        var formData = new FormData($('#edit1_' + userId + ' form')[0]);
 
         // Check if profile picture is changed
         if (!profileValid) {
@@ -416,7 +391,7 @@ $(document).ready(function() {
         }
 
         $.ajax({
-            url: 'action/update_admin.php', // file to submit the form data
+            url: 'action/update_user.php', // file to submit the form data
             type: 'POST',
             data: formData, // Form data to be submitted
             contentType: false, // Important: Prevent jQuery from setting contentType
@@ -426,7 +401,7 @@ $(document).ready(function() {
                 console.log(response); // Output response to console (for debugging)
                 Swal.fire({
                     icon: 'success',
-                    title: ' updated successfully',
+                    title: 'User updated successfully',
                     showConfirmButton: true, // Show OK button
                     confirmButtonText: 'OK'
                 }).then(() => {
@@ -451,9 +426,6 @@ $(document).ready(function() {
 });
 
 </script>
-
-
-
 
 
 

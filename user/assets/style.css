@@ -52,7 +52,7 @@ body {
 
 .home {
   height: 100vh;
-  background: url("../../img/bg.jpg");
+  background: url("../../img/bg.webp");
   background-size: cover; /* Ensure the entire background image is visible */
   background-position: center; /* Center the background image */
   display: flex;
@@ -72,6 +72,8 @@ body {
       margin-left: -100px; /* Adjust as needed */
     }
   }
+
+  
 
 
 

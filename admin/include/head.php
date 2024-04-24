@@ -13,6 +13,7 @@ checkSession();
     <meta name="author" content="">
 
     <title>DICT-TMS Admin</title>
+     <link rel="icon" type="image/x-icon" href="../img/dict_logo.png">
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,19 +26,13 @@ checkSession();
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
 
-    <!-- Font Awesome Pro -->
-    <link href="https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.1-web/css/all.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/fe15f2148c.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css" integrity="sha256-h2Gkn+H33lnKlQTNntQyLXMWq7/9XI2rlPCsLsVcUBs=" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js" integrity="sha256-+0Qf8IHMJWuYlZ2lQDBrF1+2aigIRZXEdSvegtELo2I=" crossorigin="anonymous"></script>
     <style>
         .input-error {
             border: 1px solid red !important;
-        }
-        body, #content-wrapper{
-            background: url(../img/11.jpg);
-            background-size: cover;
-            background-repeat: no-repeat;
         }
     </style>
 
